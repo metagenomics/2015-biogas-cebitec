@@ -1,1 +1,1 @@
-LaTeX sources for the 2014 GigaScince paper.
+LaTeX sources for our 2014 GigaScience paper.
