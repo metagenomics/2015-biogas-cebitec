@@ -284,21 +284,21 @@ Prior to sampling process, approximately $15\,L$ of fermenter substrate were dis
 A $20\,g$ aliquot of the fermentation sample was used for total community DNA preparation as described previously \cite{Schlueter2008}.
 %
 \subsection*{Metagenomic sequencing}
-In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in over $23$ gigabases scattered across $144$ million reads.
+In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in over $23$ gigabases scattered across $144$ million reads.\todo{we need actual numbers somewhere}
 On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer.
 On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer.
-In all cases, we sequenced for approximately 300 cycles, applying the $2 \times 150\,nt$ paired-end protocol.\todo{Eher kein 2x250: MiSeq v2 öffentlich 10/2012, Alex und ich hatten die MiSeq Daten in 07/2012!}
+In all cases, we sequenced for approximately 300 cycles, applying the $2 \times 150\,nt$ paired-end protocol.\todo[inline]{Eher kein 2x250: MiSeq v2 öffentlich 10/2012, Alex und ich hatten die MiSeq Daten in 07/2012!}
 %Two metagenome shotgun libraries were prepared with the average insert size of 690 nt and 190 nt, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) according to the manufacturer's instructions. The libraries were sequenced applying the 2 x 250 nt paired-end protocol on the Illumina MiSeq platform.
 %Additionally, two further metagenome shotgun libraries were constructed with the average insert size of 450 nt and 250 nt, respectively, applying the Paired-end Sample Preparation Kit (Illumina Inc.) as described by the manufacturer. Prepared libraries were sequenced applying 2 x 150 nt paired-end protocol on the Illumina Genome Analyzer IIx instrument.
 %
 \subsection*{Sequence quality control}
-Quality control with FastQC, version 0.11.2. Adapter contamination in Lane 7 (?). Adapter removal and quality trimming with Trimmomatic \cite{Trimmomatic}, version 0.32, using some paramters.
-\begin{enumerate}
-\item Remove adapters, using the included Truseq2-PE and Nextera-PE adapter files.
-\item Remove leading and trailing low quality or N bases (below quality 3).
-\item Adaptive quality trimming, balancing read length against error rate (target read length of 100 bases, strictness of 0.2, thus favouring read length over error sensitivity).
-\item Drop reads below 36 bases long.\todo{Needed? k=31}
-\end{enumerate}
+Quality control with FastQC, version 0.11.2\todo{cite if needed}. Adapter contamination in Lane 7\todo{mention at all?}.
+
+We used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
+After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing low quality bases (below quality 3).
+Then, we performed an adaptive quality trimming, balancing read length against error rate (target read length of 100 bases, strictness of 0.2, thus favouring read length over error sensitivity).
+Finally, reads shorter than $36$ bases were discarded.
+
 Either another table or brief summary post-QC\todo{section not final!}.
 %
 \subsection*{Metagenome assembly and quality assessment}
@@ -306,7 +306,7 @@ We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.0\todo{2.3
 This resulted in a total assembly size of approximately $217$ megabases in $55,563$ contigs, with an N50 value of $8,137\,bp$.
 Table \ref{tAssembly} summarizes our results.
 
-We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo{LAP/ALE}
+We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo{Run LAP or ALE}
 %
 \subsection*{Gene prediction and annotation}
 We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tGenes} also includes these results.
