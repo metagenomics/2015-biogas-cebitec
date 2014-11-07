@@ -71,8 +71,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\def\includegraphic{}
-\def\includegraphics{}
+%\def\includegraphic{}
+%\def\includegraphics{}
 
 
 
@@ -347,6 +347,8 @@ Ultimate goal: process optimization by biological insights\todo{section not fina
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%Remove \newpage
+\newpage
 \begin{backmatter}
 
 \section*{Competing interests}
@@ -355,7 +357,8 @@ The authors declare that they have no competing interests.
 \section*{Author's contributions}
 AB conveived and performed all bioinformatic analyses and wrote the paper.
 IM investigated all metadata and drafted part of the data description.
-AP, ASch and AScz extensively revised the paper.
+AP, ASch and will do something at some point.
+AScz conveived of many of the analyses and revised the paper.
 ASch and AScz jointly directed the project.
 All authors read and approved the final manuscript.
 
@@ -400,9 +403,12 @@ AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industria
 %%
 %% Do not use \listoffigures as most will included as separate files
 
+%Remove \newpage
+\newpage
 \section*{Figures}
 \begin{figure}[h!]
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Coverage or read counts, can discuss and decide once preliminary results are ready.}
+\includegraphics[width=\textwidth]{Rplot}
+\caption{\csentence{Relating the metagenome and metatranscriptome.} FPKM values, can discuss and decide once results are ready. I intend to highlight all genes involved in the methane metabolism (\href{http://www.genome.jp/kegg-bin/show_pathway?org_name=ko&mapno=00680&mapscale=&show_description=hide}{path:ko00680}). Low-quality image as a placeholder.}
 \label{fCoverage}
 \end{figure}
 %
@@ -418,6 +424,9 @@ AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industria
 
 %% Use of \listoftables is discouraged.
 %%
+
+%Remove \newpage
+\newpage
 \section*{Tables}
 \begin{table}[h!]
 \caption{Characteristics of the studied biogas plant. Primary digester, sampling date: Nov 15, 2010.}
@@ -495,6 +504,7 @@ KEGG stuff & ?\\
 
 
 \end{backmatter}
+%Remove \newpage and \listoftodos
 \newpage
 \listoftodos
 \end{document}
