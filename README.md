@@ -10,8 +10,13 @@ Text
 - [ ] Data description
   - [ ] Background
   - [ ] Assembly QC
+    - [ ] Percentage of mapped reads
+    - [ ] Run ALE or LAP or ?
   - [ ] KEGG stuff
+    - [ ] From gene to KO to Module/Pathway
+    - [ ] Text for Figure 1
   - [ ] Coverage analysis
+  - [ ] Do we need a taxonomic profile?
 - [ ] Discussion
 
 Figures
