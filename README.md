@@ -32,4 +32,6 @@
 - [ ] Include KEGG analyses
 - [ ] Merge everything into a single makefile
   - [ ] Create different tasks for assembly, mapping, annotation, ...
+- [ ] Final run (after updating binaries)
 - [ ] Remove CeBiTec-specific stuff (e.g. explicit qsub commands)
+
