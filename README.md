@@ -17,7 +17,7 @@
 
 ### Figures
 - [ ] Prepare Figure 1: metagenome/metatranscriptome
-  - [ ] http://www.kegg.jp/kegg-bin/show_pathway?org_name=map&mapno=00680&mapscale=&show_description=show
+  - [x] http://www.kegg.jp/kegg-bin/show_pathway?org_name=map&mapno=00680&mapscale=&show_description=show
   - [ ] http://www.kegg.jp/kegg-bin/show_module?M00567
   - [ ] http://www.kegg.jp/kegg-bin/show_module?M00356
   - [ ] http://www.kegg.jp/kegg-bin/show_module?M00357
