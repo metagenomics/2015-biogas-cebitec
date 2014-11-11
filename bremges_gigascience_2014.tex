@@ -271,7 +271,7 @@ These data will enable a deeper exploration of the biogas-producting microbial c
 %
 \subsection*{Digester management}
 The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology and was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
-The process comprises two digesters: a primary digester, where biogas and methane is produced, and a secondary digester, insignificant for production.
+The process comprises two digesters: a primary digester, where biogas and methane is produced, and a secondary digester, insignificant for production\todo{AS: Why mention if not significant?}.
 The primary digester is fed hourly with a mixture of maize silage and liquid pig manure.
 The biogas and methane yields at the time of sampling were at $810.5$ and $417.8$ liters per kg organic dry matter ($l / kg\,oDM$), respectively.
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
@@ -299,7 +299,7 @@ After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-
 Then, we performed an adaptive quality trimming, balancing read length against error rate (target read length of 100 bases, strictness of 0.2, thus favouring read length over error sensitivity).
 Finally, reads shorter than $36$ bases were discarded.
 
-Either another table or brief summary post-QC\todo{section not final!}.
+Either another table or brief summary post-QC\todo{section not final!}\todo{AS: mention total GBp left, details in table}.
 %
 \subsection*{Metagenome assembly and quality assessment}
 We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.0\todo{2.3.1}, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
@@ -312,7 +312,7 @@ We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \c
 We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tGenes} also includes these results.
 
 We blasted all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
-Of the $239,412$ predicted genes, $230,354$ were found in the KEGG database.
+Of the $239,412$ predicted genes, $230,354$ had a match in the KEGG database.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its KO.
 
 \subsection*{Coverage analysis}
@@ -331,8 +331,8 @@ Excluding KEGG analysis, which relies on a commercial license \todo{phrasing} of
 %It might be needed to adjust some paths to the used tools and databases, or alternatively symlink everything in the working directory.
 %
 \subsection*{Requirements}
-The assembly of the metagenome data sets with Ray Meta requires 70 GB of RAM. Using only 40 cores, it completed within 12 hours wall-clock time.
-Annotation with blast took, of course, forever.\todo{log runtime and memory in final run!}
+The assembly of the metagenome data sets with Ray Meta requires 70 GB of RAM. Using 40 cores, it completed within 12 hours wall-clock time.
+Annotation with blast took, of course, forever.\todo{log runtime and memory in final run!}\todo{AS: use MALT, omega, \ldots}
 %
 \section*{Discussion}
 Potential use cases.
@@ -357,13 +357,15 @@ The authors declare that they have no competing interests.
 \section*{Author's contributions}
 AB conveived and performed all bioinformatic analyses and wrote the paper.
 IM investigated all metadata and drafted part of the data description.
-%AP, ASch and will do something at some point.
+\todo{AP, ASch}
 AScz conveived of many of the analyses and revised the paper.
 ASch and AScz jointly directed the project.
 All authors read and approved the final manuscript.
 
 \section*{Acknowledgements}
-AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.\todo{Funding Andreas S, Stadtwerke?}
+AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
+\todo{Funding IM, AP, ASch}
+\todo{Stadtwerke?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
@@ -450,6 +452,7 @@ Propionic acid & $76\,mg/l$\\
 \hline
 Fed substrates & $72\,\%$ maize silage, $28\,\%$ pig manure\\
 Organic load & $4.0\,kg\,oDM\,m^{-3}\,d^{-1}$\\
+Retention time & $55\,d$\\
 Biogas yield & $810.5\,l/kg\,oDM$\\
 Methane yield & $417.8\,l/kg\,oDM$\\
 \hline
