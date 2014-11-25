@@ -24,7 +24,7 @@
   - [x] http://www.kegg.jp/kegg-bin/show_module?M00567
   - [x] http://www.kegg.jp/kegg-bin/show_module?M00356
   - [x] http://www.kegg.jp/kegg-bin/show_module?M00357
-  - [ ] http://www.kegg.jp/dbget-bin/www_bget?ec:2.8.4.1
+  - [x] http://www.kegg.jp/dbget-bin/www_bget?ec:2.8.4.1
 - [ ] Discussion with Alex and Andreas
 
 ### Tables
@@ -37,3 +37,4 @@
   - [ ] Create different tasks for assembly, mapping, annotation, ...
 - [ ] Final run (after updating binaries)
 - [ ] Remove CeBiTec-specific stuff (e.g. explicit qsub commands)
+- [ ] Eventually commit it to GitHub
