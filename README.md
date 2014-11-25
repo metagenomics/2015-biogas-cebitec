@@ -10,9 +10,12 @@
     - [ ] Run ALE or LAP or ?
   - [x] KEGG stuff
     - [x] From gene to KO to Module/Pathway
-    - [x] Text for Figure 1
+    - [ ] Explain and refer to Figure 1
   - [ ] Coverage analysis
+    - [ ] Explain and refer to Figure 2
   - [ ] Do we need a taxonomic profile?
+    - [ ] Cite some old paper instead, working on the same sample
+    - [ ] Alternatively, taxator-tk profile, weighted contigs
 - [ ] Discussion
 
 ### Figures
@@ -22,7 +25,7 @@
   - [x] http://www.kegg.jp/kegg-bin/show_module?M00356
   - [x] http://www.kegg.jp/kegg-bin/show_module?M00357
   - [ ] http://www.kegg.jp/dbget-bin/www_bget?ec:2.8.4.1
-- [x] Discussion with Alex and Andreas
+- [ ] Discussion with Alex and Andreas
 
 ### Tables
 - [x] Update Table 2
