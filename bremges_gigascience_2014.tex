@@ -260,10 +260,11 @@ a short summary of the potential uses of these data and implications for the fie
 Biogas important energy source. Clean and awesome.
 Number of biogas plants in Germany/Europe/worldwide.
 Key is process optimization, not building more and more plants.
-Little is known about the microbial community responsible for everything\todo{section not final!}.
+Little is known about the microbial community responsible for everything.
+\todo[inline]{Either copy/paste CSP stuff, or Andreas S. writes something nice.}
 
-Here, we report the first deeply sequenced metagenome (and metatranscriptome?) of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaScience}.
-We sequenced $27.3 \times$ and $19.3 \times$ deeper than previous studies relying on 454 \cite{Jaenicke2011} or SOLiD \cite{Wirth2012} sequencing\todo{phrasing}.
+Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaScience}.
+We sequenced $27.3 \times$ and $19.3 \times$ deeper than previous studies relying on 454 \cite{Jaenicke2011} or SOLiD \cite{Wirth2012} sequencing.
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
 %SOLiD \cite{Wirth2012}: 23,897,590 reads, 1,194,879,500 bases: factor of 19.3 more
 %No idea about the 454 data from Solli, 2014: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA261310
@@ -271,7 +272,8 @@ These data will enable a deeper exploration of the biogas-producting microbial c
 %
 \subsection*{Digester management}
 The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology and was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
-The process comprises two digesters: a primary digester, where biogas and methane is produced, and a secondary digester, insignificant for production\todo{AS: Why mention if not significant?}.
+The process comprises two digesters: a primary digester, where biogas and methane is produced, and a secondary digester, where the digestrate is stored thereafter.
+
 The primary digester is fed hourly with a mixture of maize silage and liquid pig manure.
 The biogas and methane yields at the time of sampling were at $810.5$ and $417.8$ liters per kg organic dry matter ($l / kg\,oDM$), respectively.
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
@@ -284,62 +286,71 @@ Prior to sampling process, approximately $15\,L$ of fermenter substrate were dis
 A $20\,g$ aliquot of the fermentation sample was used for total community DNA preparation as described previously \cite{Schlueter2008}.
 %
 \subsection*{Metagenomic sequencing}
-In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in over $23$ gigabases scattered across $144$ million reads.\todo{we need actual numbers somewhere}
-On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer.
-On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer.
-In all cases, we sequenced for approximately 300 cycles, applying the $2 \times 150\,nt$ paired-end protocol.\todo[inline]{Eher kein 2x250: MiSeq v2 öffentlich 10/2012, Alex und ich hatten die MiSeq Daten in 07/2012!}
+In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in over $23$ gigabases scattered across $144$ million reads. Table \ref{tReads} contains the raw numbers.
+
+On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
+
+On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
+%
+%In all cases, we sequenced for approximately 300 cycles, applying the $2 \times 150\,nt$ paired-end protocol.\todo[inline]{Eher kein 2x250: MiSeq v2 öffentlich 10/2012, Alex und ich hatten die MiSeq Daten in 07/2012!}
 %Two metagenome shotgun libraries were prepared with the average insert size of 690 nt and 190 nt, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) according to the manufacturer's instructions. The libraries were sequenced applying the 2 x 250 nt paired-end protocol on the Illumina MiSeq platform.
 %Additionally, two further metagenome shotgun libraries were constructed with the average insert size of 450 nt and 250 nt, respectively, applying the Paired-end Sample Preparation Kit (Illumina Inc.) as described by the manufacturer. Prepared libraries were sequenced applying 2 x 150 nt paired-end protocol on the Illumina Genome Analyzer IIx instrument.
 %
 \subsection*{Sequence quality control}
-Quality control with FastQC, version 0.11.2\todo{cite if needed}. Adapter contamination in Lane 7\todo{mention at all?}.
-
 We used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
-After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing low quality bases (below quality 3).
-Then, we performed an adaptive quality trimming, balancing read length against error rate (target read length of 100 bases, strictness of 0.2, thus favouring read length over error sensitivity).
+After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below quality 3).
+Then, we performed an adaptive quality trimming, balancing read length against error rate. We set the target read length to $100\,bp$ and the strictness to $0.2$, thus favouring read length over error sensitivity.
 Finally, reads shorter than $36$ bases were discarded.
 
-Either another table or brief summary post-QC\todo{section not final!}\todo{AS: mention total GBp left, details in table}.
+Table \ref{tReads} summarizes the impact of quality control on sequencing depth.
 %
 \subsection*{Metagenome assembly and quality assessment}
 We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.0\todo{2.3.1}, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
 This resulted in a total assembly size of approximately $217$ megabases in $55,563$ contigs, with an N50 value of $8,137\,bp$.
 Table \ref{tAssembly} summarizes our results.
 
-We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo{Run LAP or ALE}
+We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo[inline]{I will run either LAP or ALE to get the probability score. Still struggling with some details.}
 %
 \subsection*{Gene prediction and annotation}
-We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tGenes} also includes these results.
+We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tAssembly} also includes these results.
 
 We blasted all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $239,412$ predicted genes, $230,354$ had a match in the KEGG database.
-We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its KO.
-
-\subsection*{Coverage analysis}
+We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its KO, resulting in $111,380$ genes with an assigned KEGG Orthology.
+%
+\subsection*{Relating the metagenome and the metatranscriptome}
 We counted aligned reads in predicted genes with HTSeq \cite{HTSeq}, version 0.6.1p1\todo{0.6.1p2}.
-Figure \ref{fCoverage} relates the metagenome and the metatranscriptome.\todo{work in progress and up for discussion}
+Figure \ref{fCoverage} shows where we could be heading. I think it is quite nice, even if not much new insight is provided.
+But hey, we could buzz \emph{metatranscriptomics} in the title!
+\todo[inline]{Do we want to do this? If so, some additional words are needed.}
 %It was generated with the ggplot2 package (cite) in R (cite).
 %
 \section*{Availability}
 \subsection*{Data accession}
 The datasets supporting the results of this article are available in the [repository name] repository, [unique persistent identifier and hyperlink to datasets in http:// format].
+\todo[inline]{Data needs to be submitted to SRA (raw reads) and GigaDB (everything).}
 %
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 Starting from the raw read files, available from SRA and/or GigaDB, all data and results can be reproduced by a simple invocation of \emph{make}.
-Excluding KEGG analysis, which relies on a commercial license \todo{phrasing} of the KEGG database, all steps are performed using free and open-source software.
+Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 %It might be needed to adjust some paths to the used tools and databases, or alternatively symlink everything in the working directory.
 %
 \subsection*{Requirements}
-The assembly of the metagenome data sets with Ray Meta requires 70 GB of RAM. Using 40 cores, it completed within 12 hours wall-clock time.
-Annotation with blast took, of course, forever.\todo{log runtime and memory in final run!}\todo{AS: use MALT, omega, \ldots}
+%The assembly of the metagenome data sets with Ray Meta requires some GB of RAM. Using some cores, it completed within some hours wall-clock time. Annotation with blast took\ldots
+\todo[inline]{I will log runtime and memory in the final run. My goal is to list hardware requirements and CPU time needed to reproduce all results.}
 %
 \section*{Discussion}
 Potential use cases.
-Metagenomic (and metatranscriptomic?) profiling of the biogas-producing microbial community.
+
+Metagenomic and metatranscriptomic profiling of the biogas-producing microbial community.
+Highlight, that methane metabolism pathway is widely covered, but still room for improvement, i.e. sequence deeper.
+Possibly mention new data generated within the CSP? Tricky to phrase it without trashing this data set.
+
 Identification of metaproteomic data out there (cite Vera, in preparation).
 
-Ultimate goal: process optimization by biological insights\todo{section not final!}.
+Ultimate goal: process optimization by biological insights.
+\todo[inline]{Can be written once we agreed upon the rest.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -357,15 +368,14 @@ The authors declare that they have no competing interests.
 \section*{Author's contributions}
 AB conveived and performed all bioinformatic analyses and wrote the paper.
 IM investigated all metadata and drafted part of the data description.
-\todo{AP, ASch}
 AScz conveived of many of the analyses and revised the paper.
 ASch and AScz jointly directed the project.
 All authors read and approved the final manuscript.
+\todo[inline]{AP, ASch}
 
 \section*{Acknowledgements}
 AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
-\todo{Funding IM, AP, ASch}
-\todo{Stadtwerke?}
+\todo[inline]{Grants of IM, AP, ASch? Acknowledge Stadtwerke?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
@@ -385,7 +395,6 @@ AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotec
 % if your bibliography is in bibtex format, use those commands:
 \bibliographystyle{bmc-mathphys} % Style BST file
 \bibliography{bremges_gigascience_2014}      % Bibliography file (usually '*.bib' )
-\todo{Less author names, remove PMC?}
 % or include bibliography directly:
 % \begin{thebibliography}
 % \bibitem{b1}
@@ -409,14 +418,18 @@ AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotec
 \newpage
 \section*{Figures}
 \begin{figure}[h!]
-\includegraphics[width=\textwidth]{Rplot}
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Low-quality image as a placeholder. FPKM values, work in progress! Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green, methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red, and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue.}
+\centering
+\includegraphics[width=.9\textwidth]{map00680_cropped}
+\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted in red.
+Base pathway image copyrighted by Kanehisa Laboratories.}
+\label{fPathway}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.9\textwidth]{Rplot}
+\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green, methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red, and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue.}
 \label{fCoverage}
 \end{figure}
-%
-%\begin{figure}[h!]
-%\caption{\csentence{Sample figure title.} Figure legend text.}
-%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -457,9 +470,26 @@ Biogas yield & $810.5\,l/kg\,oDM$\\
 Methane yield & $417.8\,l/kg\,oDM$\\
 \hline
 \end{tabular}
+\todo[inline]{TIC only calculated, might be a few digits off}
 \label{tBiogasPlant}
 \end{table}
-\todo{TIC only calculated, might be a few digits off}
+
+\begin{table}[h!]
+\caption{Metagenomic sequencing. Initial sequencing statistics and the impact of quality control.}
+\begin{tabular}{rrrrrr}
+\hline
+Library name & Insert size & Reads, raw & post-QC & Bases, raw & post-QC\\
+\hline
+GAIIx, Lane 7 & $183 \pm 26$ & $54,630,090$ & $32,383,938$ & $8,795,444,490$ & $3,899,740,740$ \\
+GAIIx, Lane 8 & $296 \pm 49$ & $74,547,252$ & $71,969,779$ & $12,002,107,572$ & $9,616,193,061$ \\
+MiSeq, Run 1.1 & $214 \pm 53$ & $4,915,698$ & $3,632,111$ & $761,933,190$ & $468,956,057$ \\
+MiSeq, Run 1.2 & $528 \pm 117$ & $1,927,244$ & $1,921,175$ & $298,722,820$ & $277,093,745$ \\
+MiSeq, Run 2.1 & $245 \pm 36$ & $3,840,850$ & $3,831,040$ & $573,901,713$ & $560,751,191$ \\
+MiSeq, Run 2.2 & $531 \pm 118$ & $4,114,304$ & $4,103,448$ & $614,787,564$ & $580,918,665$ \\
+\hline
+\end{tabular}
+\label{tReads}
+\end{table}
 
 \begin{table}[h!]
 \caption{Metagenome assembly. Some assembly statistics, minimum contig size of $1,000\,bp$.}
@@ -472,22 +502,13 @@ Number of contigs & $55,563$\\
 N50 value & $8,137\,bp$\\
 Largest contig & $319,083\,bp$\\
 \hline
-\end{tabular}
-\label{tAssembly}
-\end{table}
-
-\begin{table}[h!]
-\caption{Gene prediction and annotation. Whatever.}
-\begin{tabular}{rl}
-\hline
-Annotation metric & Our annotaion\\
-\hline
 Predicted genes & $239,412$\\
 of these, full-length & $160,124\,(66.9\,\%)$\\
-KEGG stuff & ?\\
+Match in KEGG Genes & $230,354$\\
+of these, assigned KO & $111,380$\\
 \hline
 \end{tabular}
-\label{tGenes}
+\label{tAssembly}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -507,7 +528,4 @@ KEGG stuff & ?\\
 
 
 \end{backmatter}
-%Remove \newpage and \listoftodos
-\newpage
-\listoftodos
 \end{document}
