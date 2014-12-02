@@ -99,7 +99,7 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{The old and grumpy biogas metagenome}
+\title{Deeply sequenced metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -117,7 +117,7 @@
 
 \author[
    addressref={cebitec,techfak},                   % id's of addresses, e.g. {aff1,aff2}
-   corref={cebitec},                       % id of corresponding address, if any
+%   corref={cebitec},                       % id of corresponding address, if any
 %   noteref={n1},                        % id's of article notes, if any
    email={abremges@cebitec.uni-bielefeld.de}   % email address
 ]{\inits{AB}\fnm{Andreas} \snm{Bremges}}
@@ -126,17 +126,26 @@
 ]{\inits{IM}\fnm{Irena} \snm{Maus}}
 \author[
    addressref={cebitec}
+]{\inits{FE}\fnm{Felix} \snm{Eikmeyer}}
+\author[
+   addressref={cebitec}
+]{\inits{AW}\fnm{Anika} \snm{Winkler}}
+\author[
+   addressref={cebitec}
+]{\inits{AA}\fnm{Andreas} \snm{Albersmeier}}
+\author[
+   addressref={cebitec}
 ]{\inits{AP}\fnm{Alfred} \snm{Pühler}}
 \author[
    addressref={cebitec},
    noteref={n1}
-]{\inits{AS}\fnm{Andreas} \snm{Schlüter}}
+]{\inits{ASch}\fnm{Andreas} \snm{Schlüter}}
 \author[
    addressref={cebitec,techfak},
-%   corref={cebitec},
+   corref={cebitec},
    noteref={n1},
    email={asczyrba@cebitec.uni-bielefeld.de}
-]{\inits{AS}\fnm{Alexander} \snm{Sczyrba}}
+]{\inits{AScz}\fnm{Alexander} \snm{Sczyrba}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -268,37 +277,35 @@ We sequenced $27.3 \times$ and $19.3 \times$ deeper than previous studies relyin
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
 %SOLiD \cite{Wirth2012}: 23,897,590 reads, 1,194,879,500 bases: factor of 19.3 more
 %No idea about the 454 data from Solli, 2014: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA261310
-These data will enable a deeper exploration of the biogas-producting microbial community, a key step towards process optimization.
+These data will enable a deeper exploration of the biogas-producting microbial community, with the objective to develop rational strategies for process optimization.
 %
-\subsection*{Digester management}
+\subsection*{Digester management and process characterization}
 The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology and was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
-The process comprises two digesters: a primary digester, where biogas and methane is produced, and a secondary digester, where the digestrate is stored thereafter.
+The process comprises three digesters: a primary and secondary digester, where the main proportion of biogas is produced, and a storage tank, where the digestate is fermented thereafter.
 
-The primary digester is fed hourly with a mixture of maize silage and liquid pig manure.
+The primary digester is fed hourly with a mixture of $72\,\%$ maize silage and $28\,\%$ liquid pig manure.
 The biogas and methane yields at the time of sampling were at $810.5$ and $417.8$ liters per kg organic dry matter ($l / kg\,oDM$), respectively.
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
 Further metadata are summarized in Table \ref{tBiogasPlant}.
 %
 \subsection*{Sampling and DNA isolation}
 Samples from the primary digester of the aforementioned biogas plant were taken in November 2010.
-Prior to sampling process, approximately $15\,L$ of fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
+Prior to the sampling process, approximately $15\,L$ of the fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
 
-A $20\,g$ aliquot of the fermentation sample was used for total community DNA preparation as described previously \cite{Schlueter2008}.
+Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
 %
-\subsection*{Metagenomic sequencing}
-In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in over $23$ gigabases scattered across $144$ million reads. Table \ref{tReads} contains the raw numbers.
+\subsection*{Metagenomic and metatranscriptomic sequencing}
+In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in $144$ million reads yielding more than $23$ gigabases sequence information. Table \ref{tReads} summarizes the statistics of the sequencing approach.
 
 On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
 
 On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
-%
-%In all cases, we sequenced for approximately 300 cycles, applying the $2 \times 150\,nt$ paired-end protocol.\todo[inline]{Eher kein 2x250: MiSeq v2 öffentlich 10/2012, Alex und ich hatten die MiSeq Daten in 07/2012!}
-%Two metagenome shotgun libraries were prepared with the average insert size of 690 nt and 190 nt, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) according to the manufacturer's instructions. The libraries were sequenced applying the 2 x 250 nt paired-end protocol on the Illumina MiSeq platform.
-%Additionally, two further metagenome shotgun libraries were constructed with the average insert size of 450 nt and 250 nt, respectively, applying the Paired-end Sample Preparation Kit (Illumina Inc.) as described by the manufacturer. Prepared libraries were sequenced applying 2 x 150 nt paired-end protocol on the Illumina Genome Analyzer IIx instrument.
+
+On Illumina's MiSeq system, we sequenced further metatranscriptome library with an average insert size of 130nt and 380nt, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 160\,bp$ paired-end reads.\todo{FIXME: summarize and move details to table}
 %
 \subsection*{Sequence quality control}
 We used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
-After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below quality 3).
+After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Then, we performed an adaptive quality trimming, balancing read length against error rate. We set the target read length to $100\,bp$ and the strictness to $0.2$, thus favouring read length over error sensitivity.
 Finally, reads shorter than $36$ bases were discarded.
 
@@ -309,20 +316,20 @@ We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.0\todo{2.3
 This resulted in a total assembly size of approximately $217$ megabases in $55,563$ contigs, with an N50 value of $8,137\,bp$.
 Table \ref{tAssembly} summarizes our results.
 
-We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo[inline]{I will run either LAP or ALE to get the probability score. Still struggling with some details.}
+We aligned the post-QC\todo{ASch: QC abbrev.?} sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo[inline]{I will run either LAP or ALE to get the probability score. Still struggling with some details.}\todo[inline]{ASch: Purpose of this procedure? What for?}
 %
 \subsection*{Gene prediction and annotation}
 We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tAssembly} also includes these results.
 
 We blasted all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $239,412$ predicted genes, $230,354$ had a match in the KEGG database.
-We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its KO, resulting in $111,380$ genes with an assigned KEGG Orthology.
+We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $111,380$ genes with an assigned KEGG Orthology.
 %
 \subsection*{Relating the metagenome and the metatranscriptome}
 We counted aligned reads in predicted genes with HTSeq \cite{HTSeq}, version 0.6.1p1\todo{0.6.1p2}.
 Figure \ref{fCoverage} shows where we could be heading. I think it is quite nice, even if not much new insight is provided.
 But hey, we could buzz \emph{metatranscriptomics} in the title!
-\todo[inline]{Do we want to do this? If so, some additional words are needed.}
+\todo[inline]{Do we want to do this? If so, some additional words are needed. ASch: YES!}
 %It was generated with the ggplot2 package (cite) in R (cite).
 %
 \section*{Availability}
@@ -358,8 +365,6 @@ Ultimate goal: process optimization by biological insights.
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Remove \newpage
-\newpage
 \begin{backmatter}
 
 \section*{Competing interests}
@@ -368,14 +373,19 @@ The authors declare that they have no competing interests.
 \section*{Author's contributions}
 AB conveived and performed all bioinformatic analyses and wrote the paper.
 IM investigated all metadata and drafted part of the data description.
+FE sampled stuff.
+AW and AA sequenced stuff.
+AP provided funding.
+ASch revised the paper.
 AScz conveived of many of the analyses and revised the paper.
 ASch and AScz jointly directed the project.
 All authors read and approved the final manuscript.
-\todo[inline]{AP, ASch}
+\todo[inline]{FIXME: Phrasing of middle authors' contributions}
 
 \section*{Acknowledgements}
-AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
-\todo[inline]{Grants of IM, AP, ASch? Acknowledge Stadtwerke?}
+AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
+\todo[inline]{ASch: Biogas Marker, Biogas Core, CSP. Warum CSP???}
+\todo[inline]{Acknowledge Stadtwerke?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
@@ -414,21 +424,21 @@ AB is supported by a fellowship from the CLIB Graduate Cluster Industrial Biotec
 %%
 %% Do not use \listoffigures as most will included as separate files
 
-%Remove \newpage
-\newpage
 \section*{Figures}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{map00680_cropped}
-\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted in red.
+\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted in yellow.
 Base pathway image copyrighted by Kanehisa Laboratories.}
 \label{fPathway}
+\todo[inline]{ASch: Rechte Spalte: Methanogenes? Eher nicht. Vielleicht die Kästchen manuell einfärben?}
 \end{figure}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Rplot}
 \caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green, methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red, and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue.}
 \label{fCoverage}
+\todo[inline]{ASch: Was sind das für dünne Striche? Achsen so dünn? More detailed description, what has been done? Kann man aus dieser Analyse eine Aussage ableiten?}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -440,8 +450,6 @@ Base pathway image copyrighted by Kanehisa Laboratories.}
 %% Use of \listoftables is discouraged.
 %%
 
-%Remove \newpage
-\newpage
 \section*{Tables}
 \begin{table}[h!]
 \caption{Characteristics of the studied biogas plant. Primary digester, sampling date: Nov 15, 2010.}
@@ -470,7 +478,6 @@ Biogas yield & $810.5\,l/kg\,oDM$\\
 Methane yield & $417.8\,l/kg\,oDM$\\
 \hline
 \end{tabular}
-\todo[inline]{TIC only calculated, might be a few digits off}
 \label{tBiogasPlant}
 \end{table}
 
@@ -509,6 +516,7 @@ of these, assigned KO & $111,380$\\
 \hline
 \end{tabular}
 \label{tAssembly}
+\todo[inline]{FIXME: Anmerkungen von ASch zu den Tabellen, Index für zusätzliche Info?}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
