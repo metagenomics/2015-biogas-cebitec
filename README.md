@@ -17,6 +17,7 @@
     - [ ] Cite some old paper instead, working on the same sample
     - [ ] Alternatively, taxator-tk profile, weighted contigs
 - [ ] Discussion
+- [ ] Update GitHub URL
 
 ### Figures
 - [x] Prepare Figure 1: metagenome/metatranscriptome
