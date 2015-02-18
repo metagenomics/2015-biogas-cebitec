@@ -326,7 +326,7 @@ Of the $239,412$ predicted genes, $230,354$ had a match in the KEGG database.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $111,380$ genes with an assigned KEGG Orthology.
 %
 \subsection*{Relating the metagenome and the metatranscriptome}
-We counted aligned reads in predicted genes with HTSeq \cite{HTSeq}, version 0.6.1p1\todo{0.6.1p2}.
+We counted aligned reads in predicted genes with HTSeq \cite{HTSeq}, version 0.6.1p1\todo{0.6.1p2}.\todo{BEDtools}
 Figure \ref{fCoverage} shows where we could be heading. I think it is quite nice, even if not much new insight is provided.
 But hey, we could buzz \emph{metatranscriptomics} in the title!
 \todo[inline]{Do we want to do this? If so, some additional words are needed. ASch: YES!}
@@ -383,8 +383,8 @@ All authors read and approved the final manuscript.
 \todo[inline]{FIXME: Phrasing of middle authors' contributions}
 
 \section*{Acknowledgements}
-AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
-\todo[inline]{ASch: Biogas Marker, Biogas Core, CSP. Warum CSP???}
+AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
+\todo[inline]{ASch: Biogas Marker, Biogas Core}
 \todo[inline]{Acknowledge Stadtwerke?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -404,7 +404,7 @@ AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industria
 
 % if your bibliography is in bibtex format, use those commands:
 \bibliographystyle{bmc-mathphys} % Style BST file
-\bibliography{bremges_gigascience_2014}      % Bibliography file (usually '*.bib' )
+\bibliography{bremges_gigascience_2015}      % Bibliography file (usually '*.bib' )
 % or include bibliography directly:
 % \begin{thebibliography}
 % \bibitem{b1}
@@ -431,14 +431,14 @@ AB and IM are supported by a fellowship from the CLIB Graduate Cluster Industria
 \caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted in yellow.
 Base pathway image copyrighted by Kanehisa Laboratories.}
 \label{fPathway}
-\todo[inline]{ASch: Rechte Spalte: Methanogenes? Eher nicht. Vielleicht die Kästchen manuell einfärben?}
+\todo[inline]{Either heatmap for metagenome or 2 colors: metagenome and transcriptome}
 \end{figure}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Rplot}
 \caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green, methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red, and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue.}
 \label{fCoverage}
-\todo[inline]{ASch: Was sind das für dünne Striche? Achsen so dünn? More detailed description, what has been done? Kann man aus dieser Analyse eine Aussage ableiten?}
+\todo[inline]{More detailed description, what has been done? Kann man aus dieser Analyse eine Aussage ableiten?}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -487,12 +487,15 @@ Methane yield & $417.8\,l/kg\,oDM$\\
 \hline
 Library name & Insert size & Reads, raw & post-QC & Bases, raw & post-QC\\
 \hline
-GAIIx, Lane 7 & $183 \pm 26$ & $54,630,090$ & $32,383,938$ & $8,795,444,490$ & $3,899,740,740$ \\
-GAIIx, Lane 8 & $296 \pm 49$ & $74,547,252$ & $71,969,779$ & $12,002,107,572$ & $9,616,193,061$ \\
-MiSeq, Run 1.1 & $214 \pm 53$ & $4,915,698$ & $3,632,111$ & $761,933,190$ & $468,956,057$ \\
-MiSeq, Run 1.2 & $528 \pm 117$ & $1,927,244$ & $1,921,175$ & $298,722,820$ & $277,093,745$ \\
-MiSeq, Run 2.1 & $245 \pm 36$ & $3,840,850$ & $3,831,040$ & $573,901,713$ & $560,751,191$ \\
-MiSeq, Run 2.2 & $531 \pm 118$ & $4,114,304$ & $4,103,448$ & $614,787,564$ & $580,918,665$ \\
+GAIIx, Lane 6 & $xxx \pm xxx$ & $xxx$ & $73,165,986$ & $xxx$ & $8,455,809,264$ \\
+GAIIx, Lane 7 & $xxx \pm xxx$ & $54,630,090$ & $48,925,129$ & $8,795,444,490$ & $5,426,329,184$ \\
+GAIIx, Lane 8 & $xxx \pm xxx$ & $74,547,252$ & $73,642,681$ & $12,002,107,572$ & $9,746,408,945$ \\
+MiSeq, Run 1.1 & $xxx \pm xxx$ & $4,915,698$ & $4,915,449$ & $761,933,190$ & $610,841,270$ \\
+MiSeq, Run 1.2 & $xxx \pm xxx$ & $1,927,244$ & $1,927,126$ & $298,722,820$ & $295,503,323$ \\
+MiSeq, Run 2.1 & $xxx \pm xxx$ & $3,840,850$ & $3,840,582$ & $573,901,713$ & $573,663,794$ \\
+MiSeq, Run 2.2 & $xxx \pm xxx$ & $4,114,304$ & $4,114,086$ & $614,787,564$ & $614,573,705$ \\
+\hline
+Total & N/A & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
 \hline
 \end{tabular}
 \label{tReads}
@@ -504,15 +507,18 @@ MiSeq, Run 2.2 & $531 \pm 118$ & $4,114,304$ & $4,103,448$ & $614,787,564$ & $58
 \hline
 Assembly metric & Our assembly\\
 \hline
-Total size & $216,554,757\,bp$\\
-Number of contigs & $55,563$\\
-N50 value & $8,137\,bp$\\
-Largest contig & $319,083\,bp$\\
+Total size & $228,382,457\,bp$\\
+Number of contigs & $54,489$\\
+N50 value & $9,796\,bp$\\
+Largest contig & $333,979\,bp$\\
 \hline
-Predicted genes & $239,412$\\
-of these, full-length & $160,124\,(66.9\,\%)$\\
-Match in KEGG Genes & $230,354$\\
-of these, assigned KO & $111,380$\\
+Predicted genes & $250,596$\\
+of these, full-length & $172,372\,(69\,\%)$\\
+Match in KEGG Genes (10) & $241,153$\\
+Match in KEGG Genes (1e-3) & $200,214$\\
+Match in KEGG Genes (1e-6) & $191,766$\\
+Match in KEGG Genes (1e-9) & $184,251$\\
+of these, assigned KO & $xxx,xxx$\\
 \hline
 \end{tabular}
 \label{tAssembly}

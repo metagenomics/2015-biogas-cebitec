@@ -1,14 +1,12 @@
 
-bremges_gigascience_2014.aux
+*.aux
 
-bremges_gigascience_2014.bbl
+*.bbl
 
-bremges_gigascience_2014.blg
+*.blg
 
-bremges_gigascience_2014.log
+*.log
 
-bremges_gigascience_2014.out
+*.out
 
-bremges_gigascience_2014.synctex.gz
-
-bremges_gigascience_2014.tdo
+*.synctex.gz
