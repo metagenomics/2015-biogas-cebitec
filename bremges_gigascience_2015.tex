@@ -264,21 +264,20 @@ a short summary of the potential uses of these data and implications for the fie
 % <put your article body there>
 
 \section*{Data description}
-%
+
 \subsection*{Background}
-Biogas important energy source. Clean and awesome.
-Number of biogas plants in Germany/Europe/worldwide.
-Key is process optimization, not building more and more plants.
-Little is known about the microbial community responsible for everything.
-\todo[inline]{Either copy/paste CSP stuff, or Andreas S. writes something nice.}
+Production of biogas by means of anaerobic digestion of biomass is becoming increasingly important as biogas is regarded a clean, renewable and environmentally compatible energy source \cite{Weiland2010}. Moreover, generation of energy from biogas relies on a balanced carbon dioxide cycle.
+
+The process of biogas production takes place under anaerobic conditions and involves microbial decomposition of organic matter, yielding methane as the main final product of the fermentation process. Complex consortia of microorganisms are responsible for biomass decomposition and biogas production.
+The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA is currently the only way to obtain unbiased insights into community composition and the genetic potential of key community members.
 
 Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaScience}.
-We sequenced $27.3 \times$ and $19.3 \times$ deeper than previous studies relying on 454 \cite{Jaenicke2011} or SOLiD \cite{Wirth2012} sequencing.
+We sequenced $27.3 \times$ and $19.3 \times$ deeper, respectively, than previous studies relying on 454 \cite{Jaenicke2011} or SOLiD \cite{Wirth2012} sequencing. Metatranscriptomic sequencing of total community RNA complements the metagenome.
+Combined, these data will enable a deeper exploration of the biogas-producting microbial community, with the objective to develop rational strategies for process optimization.
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
 %SOLiD \cite{Wirth2012}: 23,897,590 reads, 1,194,879,500 bases: factor of 19.3 more
 %No idea about the 454 data from Solli, 2014: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA261310
-These data will enable a deeper exploration of the biogas-producting microbial community, with the objective to develop rational strategies for process optimization.
-%
+
 \subsection*{Digester management and process characterization}
 The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology and was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
 The process comprises three digesters: a primary and secondary digester, where the main proportion of biogas is produced, and a storage tank, where the digestate is fermented thereafter.
@@ -287,66 +286,62 @@ The primary digester is fed hourly with a mixture of $72\,\%$ maize silage and $
 The biogas and methane yields at the time of sampling were at $810.5$ and $417.8$ liters per kg organic dry matter ($l / kg\,oDM$), respectively.
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
 Further metadata are summarized in Table \ref{tBiogasPlant}.
-%
+
 \subsection*{Sampling and DNA isolation}
 Samples from the primary digester of the aforementioned biogas plant were taken in November 2010.
 Prior to the sampling process, approximately $15\,L$ of the fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
 
 Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
-%
-\subsection*{Metagenomic and metatranscriptomic sequencing}
+
+\subsection*{Metagenomic sequencing}
 In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in $144$ million reads yielding more than $23$ gigabases sequence information. Table \ref{tReads} summarizes the statistics of the sequencing approach.
 
 On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
 
 On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
 
-On Illumina's MiSeq system, we sequenced further metatranscriptome library with an average insert size of 130nt and 380nt, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 160\,bp$ paired-end reads.\todo{FIXME: summarize and move details to table}
-%
+\subsection*{Metatranscriptomic sequencing}
+
+On Illumina's Genome Analyzer IIx system, we sequenced further metatranscriptome library with an average insert size of 130nt and 380nt, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 160\,bp$ paired-end reads.\todo[inline]{search the damn transcript to double-check Irena's info - seems wrong to me}
+
 \subsection*{Sequence quality control}
 We used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
-Then, we performed an adaptive quality trimming, balancing read length against error rate. We set the target read length to $100\,bp$ and the strictness to $0.2$, thus favouring read length over error sensitivity.
-Finally, reads shorter than $36$ bases were discarded.
-
 Table \ref{tReads} summarizes the impact of quality control on sequencing depth.
-%
+
 \subsection*{Metagenome assembly and quality assessment}
-We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.0\todo{2.3.1}, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
-This resulted in a total assembly size of approximately $217$ megabases in $55,563$ contigs, with an N50 value of $8,137\,bp$.
+We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
+This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
 Table \ref{tAssembly} summarizes our results.
 
-We aligned the post-QC\todo{ASch: QC abbrev.?} sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.1\todo{2.2.4}, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.\todo[inline]{I will run either LAP or ALE to get the probability score. Still struggling with some details.}\todo[inline]{ASch: Purpose of this procedure? What for?}
-%
+We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file. \todo[inline]{Insert mapping statistics (roughly 80\% could be mapped per sample), mention insert sizes as reported by Picardtools (agreement with library prep?), and try to understand the ALE score of $-5390031450.700606$}
+
 \subsection*{Gene prediction and annotation}
-We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $239,412$ protein-coding genes on the assembled contigs. Table \ref{tAssembly} also includes these results.
+We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. Table \ref{tAssembly} also includes these results.
 
 We blasted all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
-Of the $239,412$ predicted genes, $230,354$ had a match in the KEGG database.
-We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $111,380$ genes with an assigned KEGG Orthology.
-%
+Of the $250,596$ predicted genes, $191,766$ had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
+We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $xxx$ genes with an assigned KEGG Orthology.\todo[inline]{Kegg-Gene to KO mapping contained a bug, will be fixed asap!}
+
 \subsection*{Relating the metagenome and the metatranscriptome}
-We counted aligned reads in predicted genes with HTSeq \cite{HTSeq}, version 0.6.1p1\todo{0.6.1p2}.\todo{BEDtools}
-Figure \ref{fCoverage} shows where we could be heading. I think it is quite nice, even if not much new insight is provided.
-But hey, we could buzz \emph{metatranscriptomics} in the title!
-\todo[inline]{Do we want to do this? If so, some additional words are needed. ASch: YES!}
-%It was generated with the ggplot2 package (cite) in R (cite).
-%
+We counted aligned reads in predicted genes with BEDTools, version 2.22.0, \cite{BEDTools}.
+Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage in RPKM units.\todo[inline]{I'm not 100\% happy with this.}
+
 \section*{Availability}
 \subsection*{Data accession}
 The datasets supporting the results of this article are available in the [repository name] repository, [unique persistent identifier and hyperlink to datasets in http:// format].
 \todo[inline]{Data needs to be submitted to SRA (raw reads) and GigaDB (everything).}
-%
+
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 Starting from the raw read files, available from SRA and/or GigaDB, all data and results can be reproduced by a simple invocation of \emph{make}.
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 %It might be needed to adjust some paths to the used tools and databases, or alternatively symlink everything in the working directory.
-%
+
 \subsection*{Requirements}
 %The assembly of the metagenome data sets with Ray Meta requires some GB of RAM. Using some cores, it completed within some hours wall-clock time. Annotation with blast took\ldots
 \todo[inline]{I will log runtime and memory in the final run. My goal is to list hardware requirements and CPU time needed to reproduce all results.}
-%
+
 \section*{Discussion}
 Potential use cases.
 
@@ -354,7 +349,7 @@ Metagenomic and metatranscriptomic profiling of the biogas-producing microbial c
 Highlight, that methane metabolism pathway is widely covered, but still room for improvement, i.e. sequence deeper.
 Possibly mention new data generated within the CSP? Tricky to phrase it without trashing this data set.
 
-Identification of metaproteomic data out there (cite Vera, in preparation).
+Identification of metaproteomic data out there (cite Vera, in preparation, and Magdeburg).
 
 Ultimate goal: process optimization by biological insights.
 \todo[inline]{Can be written once we agreed upon the rest.}
@@ -431,14 +426,14 @@ AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Indu
 \caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted in yellow.
 Base pathway image copyrighted by Kanehisa Laboratories.}
 \label{fPathway}
-\todo[inline]{Either heatmap for metagenome or 2 colors: metagenome and transcriptome}
+\todo[inline]{Nicer (?) alternative: 2 colors, metagenome and metatranscriptome!}
 \end{figure}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Rplot}
 \caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green, methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red, and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue.}
 \label{fCoverage}
-\todo[inline]{More detailed description, what has been done? Kann man aus dieser Analyse eine Aussage ableiten?}
+\todo[inline]{Spotted a mistake in KEGG analysis, figure colors will be re-added asap!}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -482,23 +477,24 @@ Methane yield & $417.8\,l/kg\,oDM$\\
 \end{table}
 
 \begin{table}[h!]
-\caption{Metagenomic sequencing. Initial sequencing statistics and the impact of quality control.}
-\begin{tabular}{rrrrrr}
+\caption{Metagenomic and metatranscriptomic sequencing. Initial sequencing statistics and the impact of quality control.}
+\begin{tabular}{rrrrrrr}
 \hline
-Library name & Insert size & Reads, raw & post-QC & Bases, raw & post-QC\\
+Library name & Type & Insert size & Reads, raw & post-QC & Bases, raw & post-QC\\
 \hline
-GAIIx, Lane 6 & $xxx \pm xxx$ & $xxx$ & $73,165,986$ & $xxx$ & $8,455,809,264$ \\
-GAIIx, Lane 7 & $xxx \pm xxx$ & $54,630,090$ & $48,925,129$ & $8,795,444,490$ & $5,426,329,184$ \\
-GAIIx, Lane 8 & $xxx \pm xxx$ & $74,547,252$ & $73,642,681$ & $12,002,107,572$ & $9,746,408,945$ \\
-MiSeq, Run 1.1 & $xxx \pm xxx$ & $4,915,698$ & $4,915,449$ & $761,933,190$ & $610,841,270$ \\
-MiSeq, Run 1.2 & $xxx \pm xxx$ & $1,927,244$ & $1,927,126$ & $298,722,820$ & $295,503,323$ \\
-MiSeq, Run 2.1 & $xxx \pm xxx$ & $3,840,850$ & $3,840,582$ & $573,901,713$ & $573,663,794$ \\
-MiSeq, Run 2.2 & $xxx \pm xxx$ & $4,114,304$ & $4,114,086$ & $614,787,564$ & $614,573,705$ \\
+GAIIx, Lane 6 & RNA, TruSeq & $202 \pm 49$ & $78,752,308$ & $73,165,986$ & $12,679,121,588$ & $8,455,809,264$ \\
+GAIIx, Lane 7 & DNA, TruSeq & $157 \pm 19$ & $54,630,090$ & $48,925,129$ & $8,795,444,490$ & $5,426,329,184$ \\
+GAIIx, Lane 8 & DNA, TruSeq & $298 \pm 32$ & $74,547,252$ & $73,642,681$ & $12,002,107,572$ & $9,746,408,945$ \\
+MiSeq, Run 1.1 & DNA, Nextera & $173 \pm 53$ & $4,915,698$ & $4,915,449$ & $761,933,190$ & $610,841,270$ \\
+MiSeq, Run 1.2 & DNA, Nextera & $522 \pm 88$ & $1,927,244$ & $1,927,126$ & $298,722,820$ & $295,503,323$ \\
+MiSeq, Run 2.1 & DNA, Nextera & $249 \pm 30$ & $3,840,850$ & $3,840,582$ & $573,901,713$ & $573,663,794$ \\
+MiSeq, Run 2.2 & DNA, Nextera & $525 \pm 90$ & $4,114,304$ & $4,114,086$ & $614,787,564$ & $614,573,705$ \\
 \hline
-Total & N/A & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
+Total & N/A & & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
 \hline
 \end{tabular}
 \label{tReads}
+\todo[inline]{Move insert size metrics from Picardtools to another table, add mapping statistics}
 \end{table}
 
 \begin{table}[h!]
@@ -522,7 +518,7 @@ of these, assigned KO & $xxx,xxx$\\
 \hline
 \end{tabular}
 \label{tAssembly}
-\todo[inline]{FIXME: Anmerkungen von ASch zu den Tabellen, Index für zusätzliche Info?}
+\todo[inline]{KOs to be added asap, see above.}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
