@@ -99,7 +99,7 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Deeply sequenced metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant}
+\title{The metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -158,16 +158,16 @@
 
 \address[id=cebitec]{%                           % unique id
   \orgname{Center for Biotechnology, Bielefeld University}, % university, etc
-  %\street{},                     %
-  %\postcode{33615}                                % post or zip code
-  %\city{Bielefeld},                              % city
+  %\street{Universitätsstraße 27},                     %
+  \postcode{33615}                                % post or zip code
+  \city{Bielefeld},                              % city
   \cny{Germany}                                    % country
 }
 \address[id=techfak]{%
   \orgname{Faculty of Technology, Bielefeld University},
-  %\street{},
-  %\postcode{}
-  %\city{Bielefeld},
+  %\street{Universitätsstraße 25},
+  \postcode{33615}
+  \city{Bielefeld},
   \cny{Germany}
 }
 
@@ -287,11 +287,11 @@ The biogas and methane yields at the time of sampling were at $810.5$ and $417.8
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
 Further metadata are summarized in Table \ref{tBiogasPlant}.
 
-\subsection*{Sampling and DNA isolation}
+\subsection*{Sampling and DNA/RNA isolation}
 Samples from the primary digester of the aforementioned biogas plant were taken in November 2010.
 Prior to the sampling process, approximately $15\,L$ of the fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
 
-Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
+Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}. RAN extraction was done at \emph{vertis}, using some protocol\todo{check.}.
 
 \subsection*{Metagenomic sequencing}
 In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in $144$ million reads yielding more than $23$ gigabases sequence information. Table \ref{tReads} summarizes the statistics of the sequencing approach.
@@ -490,7 +490,8 @@ MiSeq, Run 1.2 & DNA, Nextera & $522 \pm 88$ & $1,927,244$ & $1,927,126$ & $298,
 MiSeq, Run 2.1 & DNA, Nextera & $249 \pm 30$ & $3,840,850$ & $3,840,582$ & $573,901,713$ & $573,663,794$ \\
 MiSeq, Run 2.2 & DNA, Nextera & $525 \pm 90$ & $4,114,304$ & $4,114,086$ & $614,787,564$ & $614,573,705$ \\
 \hline
-Total & N/A & & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
+Total DNA & N/A & & $143,975,438$ & $137,365,053$ & $23,046,897,349$ & $17,267,320,221$ \\
+Total RNA & N/A & & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
 \hline
 \end{tabular}
 \label{tReads}
