@@ -116,10 +116,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author[
-   addressref={cebitec,techfak},                   % id's of addresses, e.g. {aff1,aff2}
-%   corref={cebitec},                       % id of corresponding address, if any
-%   noteref={n1},                        % id's of article notes, if any
-   email={abremges@cebitec.uni-bielefeld.de}   % email address
+   addressref={cebitec,techfak},
+   corref={cebitec},
+   email={abremges@cebitec.uni-bielefeld.de}
 ]{\inits{AB}\fnm{Andreas} \snm{Bremges}}
 \author[
    addressref={cebitec}
@@ -142,7 +141,7 @@
 ]{\inits{ASch}\fnm{Andreas} \snm{Schlüter}}
 \author[
    addressref={cebitec,techfak},
-   corref={cebitec},
+%   corref={cebitec},
    noteref={n1},
    email={asczyrba@cebitec.uni-bielefeld.de}
 ]{\inits{AScz}\fnm{Alexander} \snm{Sczyrba}}
@@ -206,11 +205,11 @@ Most of the organisms of biogas communities are still unknown and non-cultivable
 %a presentation of the interest or relevance of these data for the broader community
 %
 \parttitle{Findings}
-We report the first deeply sequenced metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant. Our metagenome assembly reconstructed most genes involved in the methane metabolism, indicating sufficient coverage for most downstream analyses.
+We report the first deeply sequenced metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant. Our metagenome assembly reconstructed most genes involved in methane metabolism, a key pathway involving methanogenesis populated by low-abundance archaea, indicating sufficient coverage for many downstream analyses.
 %a very brief preview of the data type(s) produced, the methods used, and information relevant to data validation
 %
 \parttitle{Conclusions}
-Sequenced at least one order of magnitude deeper than previous studies, our metagenome data will enable novel insights into community composition and the genetic potential of important community members. Moreover, mapping of transcripts to reconstructed genome sequences will enable identification of active metabolic pathways in target organisms.
+Sequenced at least one order of magnitude deeper than previous studies, our metagenome data will enable novel insights into community composition and the genetic potential of important community members. Moreover, mapping of transcripts to reconstructed genome sequences will enable the identification of active metabolic pathways in target organisms.
 %a short summary of the potential uses of these data and implications for the field
 \end{abstract}
 
@@ -290,27 +289,20 @@ The biogas and methane yields at the time of sampling were at $810.5$ and $417.8
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
 Further metadata are summarized in Table \ref{tBiogasPlant}.
 
-\subsection*{Sampling and DNA/RNA isolation}
+\subsection*{Sampling and nucleic acid isolation}
 Samples from the primary digester of the aforementioned biogas plant were taken in November 2010.
 Prior to the sampling process, approximately $15\,L$ of the fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
 
-Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}. RAN extraction was done at \emph{vertis}, using some protocol\todo{check.}.
+Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}. RNA extraction was done at \emph{vertis}, using some protocol\todo{check.}.
 
-\subsection*{Metagenomic sequencing}
-In total, we sequenced four different metagenome shotgun libraries with different insert sizes, resulting in $144$ million reads yielding more than $23$ gigabases sequence information. Table \ref{tReads} summarizes the statistics of the sequencing approach.
+\subsection*{Sequencing and quality control}
+We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
+On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
+Our sequencing efforts, yielding $35$ gigabases in total, are specified in Table \ref{tReads}.
 
-On Illumina's Genome Analyzer IIx system, we sequenced two libraries with an average insert size of $250\,nt$ and $450\,nt$, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
-
-On Illumina's MiSeq system, we sequenced two further libraries with an average insert size of $190\,nt$ and $690\,nt$, respectively, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
-
-\subsection*{Metatranscriptomic sequencing}
-
-On Illumina's Genome Analyzer IIx system, we sequenced further metatranscriptome library with an average insert size of 130nt and 380nt, respectively, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 160\,bp$ paired-end reads.\todo[inline]{search the damn transcript to double-check Irena's info - seems wrong to me}
-
-\subsection*{Sequence quality control}
-We used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
+We then used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
-Table \ref{tReads} summarizes the impact of quality control on sequencing depth.
+Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of filtered sequence data passed quality control.
 
 \subsection*{Metagenome assembly and quality assessment}
 We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
@@ -339,7 +331,7 @@ The datasets supporting the results of this article are available in the [reposi
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 Starting from the raw read files, available from SRA and/or GigaDB, all data and results can be reproduced by a simple invocation of \emph{make}.
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
-%It might be needed to adjust some paths to the used tools and databases, or alternatively symlink everything in the working directory.
+\todo[inline]{Wrap the whole pipeline in one Docker container, probably implementing bioboxes v0.8}
 
 \subsection*{Requirements}
 %The assembly of the metagenome data sets with Ray Meta requires some GB of RAM. Using some cores, it completed within some hours wall-clock time. Annotation with blast took\ldots
@@ -480,25 +472,35 @@ Methane yield & $417.8\,l/kg\,oDM$\\
 \end{table}
 
 \begin{table}[h!]
-\caption{Metagenomic and metatranscriptomic sequencing. Initial sequencing statistics and the impact of quality control.}
-\begin{tabular}{rrrrrrr}
+\caption{The different sequencing libraries. We sequenced $35$ Gigabases scattered across $222$ million reads.}
+\begin{tabular}{llrrrr}
 \hline
-Library name & Type & Insert size & Reads, raw & post-QC & Bases, raw & post-QC\\
+Library name & Library type & Insert size$^{1}$ & Cycles & Reads & Bases \\
 \hline
-GAIIx, Lane 6 & RNA, TruSeq & $202 \pm 49$ & $78,752,308$ & $73,165,986$ & $12,679,121,588$ & $8,455,809,264$ \\
-GAIIx, Lane 7 & DNA, TruSeq & $157 \pm 19$ & $54,630,090$ & $48,925,129$ & $8,795,444,490$ & $5,426,329,184$ \\
-GAIIx, Lane 8 & DNA, TruSeq & $298 \pm 32$ & $74,547,252$ & $73,642,681$ & $12,002,107,572$ & $9,746,408,945$ \\
-MiSeq, Run 1.1 & DNA, Nextera & $173 \pm 53$ & $4,915,698$ & $4,915,449$ & $761,933,190$ & $610,841,270$ \\
-MiSeq, Run 1.2 & DNA, Nextera & $522 \pm 88$ & $1,927,244$ & $1,927,126$ & $298,722,820$ & $295,503,323$ \\
-MiSeq, Run 2.1 & DNA, Nextera & $249 \pm 30$ & $3,840,850$ & $3,840,582$ & $573,901,713$ & $573,663,794$ \\
-MiSeq, Run 2.2 & DNA, Nextera & $525 \pm 90$ & $4,114,304$ & $4,114,086$ & $614,787,564$ & $614,573,705$ \\
-\hline
-Total DNA & N/A & & $143,975,438$ & $137,365,053$ & $23,046,897,349$ & $17,267,320,221$ \\
-Total RNA & N/A & & $xxx$ & $xxx$ & $xxx$ & $xxx$ \\
+GAIIx, Lane 6 & RNA, TruSeq & $202 \pm 49$ & $2 \times 161$ & $78,752,308$ & $12,679,121,588$ \\
+GAIIx, Lane 7 & DNA, TruSeq & $157 \pm 19$ & $2 \times 161$ & $54,630,090$ & $8,795,444,490$ \\
+GAIIx, Lane 8 & DNA, TruSeq & $298 \pm 32$ & $2 \times 161$ & $74,547,252$ & $12,002,107,572$ \\
+MiSeq, Run 1.1 & DNA, Nextera & $173 \pm 53$ & $2 \times 155$ & $4,915,698$ & $761,933,190$ \\
+MiSeq, Run 1.2 & DNA, Nextera$^{2}$ & $522 \pm 88$ & $2 \times 155$ & $1,927,244$ & $298,722,820$ \\
+MiSeq, Run 2.1 & DNA, Nextera & $249 \pm 30$ & $2 \times 155$ & $3,840,850$ & $573,901,713$ \\
+MiSeq, Run 2.2 & DNA, Nextera$^{2}$ & $525 \pm 90$ & $2 \times 155$ & $4,114,304$ & $614,787,564$ \\
 \hline
 \end{tabular}
 \label{tReads}
-\todo[inline]{Move insert size metrics from Picardtools to another table, add mapping statistics}
+\\$^{1}$Fragment sizes determines by Picardtools. $^{2}$This Nextera library was sequenced twice.
+\end{table}
+
+\begin{table}[h!]
+\caption{Metagenomic and metatranscriptomic sequencing. Total sequencing depth and the impact of quality control.}
+\begin{tabular}{rrrrr}
+\hline
+Library type & Reads, raw & post-QC & Bases, raw & post-QC\\
+\hline
+Metagenome (total) & $143,975,438$ & $137,365,053$ & $23,046,897,349$ & $17,267,320,221$ \\
+Metatranscriptome & $78,752,308$ & $73,165,986$ & $12,679,121,588$ & $8,455,809,264$ \\
+\hline
+\end{tabular}
+\label{tPostQC}
 \end{table}
 
 \begin{table}[h!]
