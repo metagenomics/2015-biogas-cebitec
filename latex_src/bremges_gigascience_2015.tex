@@ -276,7 +276,7 @@ Production of biogas by means of anaerobic digestion of biomass is becoming incr
 The process of biogas production takes place under anaerobic conditions and involves microbial decomposition of organic matter, yielding methane as the main final product of the fermentation process. Complex consortia of microorganisms are responsible for biomass decomposition and biogas production.
 The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA is currently the only way to obtain unbiased insights into community composition and the genetic potential of key community members.
 
-Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaScience}.
+Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaDB}.
 We sequenced $27.3 \times$ and $19.3 \times$ deeper, respectively, than previous studies relying on 454 \cite{Jaenicke2011} or SOLiD \cite{Wirth2012} sequencing. Metatranscriptomic sequencing of total community RNA complements the metagenome.
 Combined, these data will enable a deeper exploration of the biogas-producting microbial community, with the objective to develop rational strategies for process optimization.
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
@@ -307,22 +307,20 @@ We then used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal a
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of filtered sequence data passed quality control.
 
-\subsection*{Metagenome assembly and quality assessment}\todo{Mapping, Picardtools}
+\subsection*{Metagenome assembly and annotation}
 We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
 This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
 Table \ref{tAssembly} summarizes our results.
 
-We aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort the alignment file.
-
-\subsection*{Gene prediction and annotation}\todo{TODO}
-We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. Table \ref{tAssembly} also includes these results.
-
-We blasted all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
+We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $250,596$ predicted genes, $191,766$ had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $xxx$ genes with an assigned KEGG Orthology.
 
 \subsection*{Relating the metagenome and the metatranscriptome}\todo{TODO}
-We counted aligned reads in predicted genes with BEDTools, version 2.22.0, \cite{BEDTools}.
+To highlight potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We simply counted the number of reads aligned to all predicted gene with BEDTools, version 2.22.0, \cite{BEDTools}.
+
+Figure \ref{fPathway} as a toy example, highlighting genes in some pathway.
+
 Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage in RPKM units.
 
 \section*{Availability}
@@ -333,18 +331,17 @@ Intermediate results for the review process are deposited in the project's GitHu
 
 \subsection*{Reproducibility}\todo{TODO}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
-Starting from the raw read files, available from SRA and/or GigaDB, all data and results can be reproduced by a simple invocation of \emph{make}.
-Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
+Starting from the raw read files, all data and results can be reproduced by a simple invocation of \emph{make}.
 To further support reproducibility, all tools and dependencies are available in a single Docker container implementing the bioboxes assembly interface, version 0.8, from DockerHub.
+Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
 \section*{Discussion}\todo{TODO}
 Potential use cases.
 
 Metagenomic and metatranscriptomic profiling of the biogas-producing microbial community.
 Highlight, that methane metabolism pathway is widely covered, but still room for improvement, i.e. sequence deeper.
-Possibly mention new data generated within the CSP? Tricky to phrase it without trashing this data set.
 
-Identification of metaproteomic data out there (cite Vera, in preparation, and Magdeburg - Fabian).
+Identification of metaproteomic data out there \cite{Kohrs2015}.
 
 Ultimate goal: process optimization by biological insights.
 
@@ -476,14 +473,14 @@ Accession & Library name & Library type & Insert size$^{1}$ & Cycles & Reads & B
 ERS697694 & GAIIx, Lane 6 & RNA, TruSeq & $202 \pm 49$ & $2 \times 161$ & $78,752,308$ & $12,679,121,588$ \\
 ERS697688 & GAIIx, Lane 7 & DNA, TruSeq & $157 \pm 19$ & $2 \times 161$ & $54,630,090$ & $8,795,444,490$ \\
 ERS697689 & GAIIx, Lane 8 & DNA, TruSeq & $298 \pm 32$ & $2 \times 161$ & $74,547,252$ & $12,002,107,572$ \\
-ERS697690 & MiSeq, Run 1.1 & DNA, Nextera & $173 \pm 53$ & $2 \times 155$ & $4,915,698$ & $761,933,190$ \\
-ERS697691 & MiSeq, Run 1.2 & DNA, Nextera$^{2}$ & $522 \pm 88$ & $2 \times 155$ & $1,927,244$ & $298,722,820$ \\
-ERS697692 & MiSeq, Run 2.1 & DNA, Nextera & $249 \pm 30$ & $2 \times 155$ & $3,840,850$ & $573,901,713$ \\
-ERS697693 & MiSeq, Run 2.2 & DNA, Nextera$^{2}$ & $525 \pm 90$ & $2 \times 155$ & $4,114,304$ & $614,787,564$ \\
+ERS697690 & MiSeq, Run A1 & DNA, Nextera & $173 \pm 53$ & $2 \times 155$ & $4,915,698$ & $761,933,190$ \\
+ERS697691 & MiSeq, Run A2 & DNA, Nextera$^{2}$ & $522 \pm 88$ & $2 \times 155$ & $1,927,244$ & $298,722,820$ \\
+ERS697692 & MiSeq, Run B1 & DNA, Nextera & $249 \pm 30$ & $2 \times 155$ & $3,840,850$ & $573,901,713$ \\
+ERS697693 & MiSeq, Run B2 & DNA, Nextera$^{2}$ & $525 \pm 90$ & $2 \times 155$ & $4,114,304$ & $614,787,564$ \\
 \hline
 \end{tabular}
 \label{tReads}
-\\$^{1}$Fragment sizes determined by Picardtools. $^{2}$This Nextera library was sequenced twice.
+\\$^{1}$Insert sizes determined with Picard tools. $^{2}$This Nextera library was sequenced twice.
 \end{table}
 
 \begin{table}[h!]
