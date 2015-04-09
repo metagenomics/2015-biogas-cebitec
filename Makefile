@@ -36,7 +36,7 @@ MiSeq_%.trimmomatic_1P.fastq.gz MiSeq_%.trimmomatic_1U.fastq.gz MiSeq_%.trimmoma
 	java -jar trimmomatic-0.32.jar PE -baseout MiSeq_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:NexteraPE-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
 
 ###############
-# Assembly
+# Assembly (using 32 Cores)
 ###############
 
 .PHONY: ray_meta
@@ -49,7 +49,7 @@ Contigs_gt1kb.fasta: RayMeta_k31/Contigs.fasta
 	cp $^ $@
 
 ###############
-# Gene Prediction
+# Gene prediction
 ###############
 
 .PHONY: prodigal
@@ -59,7 +59,16 @@ prodigal: Contigs_gt1kb.prodigal.faa Contigs_gt1kb.prodigal.fna Contigs_gt1kb.pr
 	prodigal -p meta -a Contigs_gt1kb.prodigal.faa -d Contigs_gt1kb.prodigal.fna -f gff -o Contigs_gt1kb.prodigal.gff -i $^
 
 ###############
-# Read Mapping
+# BLASTP against KEGG
+###############
+
+.PHONY .SILENT: kegg-blastp
+kegg-blastp:
+	echo 'We distributed BLASTP-jobs on our compute cluster. A simplified command, reproducing the results but running several weeks, looks like this:'
+	echo 'blastp -max_target_seqs 1 -outfmt 6 -query Contigs_gt1kb.prodigal.faa -out Contigs_gt1kb.prodigal.faa.blastout.tab -db /path/to/kegg/blastdb'
+
+###############
+# Read mapping (using 32 cores)
 ###############
 
 .PHONY: bowtie2-build bowtie2-run samtools-index
@@ -77,7 +86,7 @@ samtools-index: GAIIx_Lane6.trimmomatic.bam.bai GAIIx_Lane7.trimmomatic.bam.bai 
 	samtools index $^
 
 ###############
-# Count Reads
+# Count reads in genes
 ###############
 
 .PHONY: bedtools-multicov
