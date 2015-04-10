@@ -5,8 +5,6 @@ MAINTAINER Peter Belmann
 RUN mkdir /home/biogas
 ADD Makefile /home/biogas/Makefile
 ADD run.sh /home/biogas/run.sh
-ADD raw_data /home/biogas/raw_data
-RUN gunzip /home/biogas/raw_data/*.gz && mv /home/biogas/raw_data/* /home/biogas
 
 #install ray
 RUN apt-get update
