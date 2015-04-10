@@ -70,7 +70,7 @@ kegg-blastp:
 	echo 'blastp -max_target_seqs 1 -outfmt 6 -query Contigs_gt1kb.prodigal.faa -out Contigs_gt1kb.prodigal.faa.blastout.tab -db /path/to/kegg/blastdb'
 
 ###############
-# Read mapping (using 32 cores)
+# Read mapping (using 8 cores as default)
 ###############
 
 .PHONY: bowtie2-build bowtie2-run samtools-index
