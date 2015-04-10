@@ -12,8 +12,6 @@ THREADS_RAY=48
 THREADS_MISC=8
 # For non-parallel 'make', set both variables to e.g. the number of cores
 
-THREADS=8
-
 ###############
 # Check dependencies
 ###############
