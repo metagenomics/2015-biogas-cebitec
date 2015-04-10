@@ -1,5 +1,7 @@
 all: check_bin trimmomatic ray_meta prodigal bowtie2-build bowtie2-run samtools-index bedtools-multicov
 
+THREADS=8
+
 ###############
 # Check progs
 ###############
@@ -36,14 +38,14 @@ MiSeq_%.trimmomatic_1P.fastq.gz MiSeq_%.trimmomatic_1U.fastq.gz MiSeq_%.trimmoma
 	java -jar trimmomatic-0.32.jar PE -baseout MiSeq_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:NexteraPE-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
 
 ###############
-# Assembly (using 32 Cores)
+# Assembly (using 8 Cores as default)
 ###############
 
 .PHONY: ray_meta
 ray_meta: Contigs_gt1kb.fasta
 
 RayMeta_k31/Contigs.fasta: GAIIx_Lane7 GAIIx_Lane8 MiSeq_A1 MiSeq_A2 MiSeq_B1 MiSeq_B2
-	mpiexec -n 32 Ray -k 31 -p GAIIx_Lane7.trimmomatic_1P.fastq.gz GAIIx_Lane7.trimmomatic_2P.fastq.gz -s GAIIx_Lane7.trimmomatic_1U.fastq.gz -s GAIIx_Lane7.trimmomatic_2U.fastq.gz -p GAIIx_Lane8.trimmomatic_1P.fastq.gz GAIIx_Lane8.trimmomatic_2P.fastq.gz -s GAIIx_Lane8.trimmomatic_1U.fastq.gz -s GAIIx_Lane8.trimmomatic_2U.fastq.gz -p MiSeq_A1.trimmomatic_1P.fastq.gz MiSeq_A1.trimmomatic_2P.fastq.gz -s MiSeq_A1.trimmomatic_1U.fastq.gz -s MiSeq_A1.trimmomatic_2U.fastq.gz -p MiSeq_A2.trimmomatic_1P.fastq.gz MiSeq_A2.trimmomatic_2P.fastq.gz -s MiSeq_A2.trimmomatic_1U.fastq.gz -s MiSeq_A2.trimmomatic_2U.fastq.gz -p MiSeq_B1.trimmomatic_1P.fastq.gz MiSeq_B1.trimmomatic_2P.fastq.gz -s MiSeq_B1.trimmomatic_1U.fastq.gz -s MiSeq_B1.trimmomatic_2U.fastq.gz -p MiSeq_B2.trimmomatic_1P.fastq.gz MiSeq_B2.trimmomatic_2P.fastq.gz -s MiSeq_B2.trimmomatic_1U.fastq.gz -s MiSeq_B2.trimmomatic_2U.fastq.gz -o RayMeta_k31 -minimum-contig-length 1000
+	mpiexec -n $(THREADS) Ray -k 31 -p GAIIx_Lane7.trimmomatic_1P.fastq.gz GAIIx_Lane7.trimmomatic_2P.fastq.gz -s GAIIx_Lane7.trimmomatic_1U.fastq.gz -s GAIIx_Lane7.trimmomatic_2U.fastq.gz -p GAIIx_Lane8.trimmomatic_1P.fastq.gz GAIIx_Lane8.trimmomatic_2P.fastq.gz -s GAIIx_Lane8.trimmomatic_1U.fastq.gz -s GAIIx_Lane8.trimmomatic_2U.fastq.gz -p MiSeq_A1.trimmomatic_1P.fastq.gz MiSeq_A1.trimmomatic_2P.fastq.gz -s MiSeq_A1.trimmomatic_1U.fastq.gz -s MiSeq_A1.trimmomatic_2U.fastq.gz -p MiSeq_A2.trimmomatic_1P.fastq.gz MiSeq_A2.trimmomatic_2P.fastq.gz -s MiSeq_A2.trimmomatic_1U.fastq.gz -s MiSeq_A2.trimmomatic_2U.fastq.gz -p MiSeq_B1.trimmomatic_1P.fastq.gz MiSeq_B1.trimmomatic_2P.fastq.gz -s MiSeq_B1.trimmomatic_1U.fastq.gz -s MiSeq_B1.trimmomatic_2U.fastq.gz -p MiSeq_B2.trimmomatic_1P.fastq.gz MiSeq_B2.trimmomatic_2P.fastq.gz -s MiSeq_B2.trimmomatic_1U.fastq.gz -s MiSeq_B2.trimmomatic_2U.fastq.gz -o RayMeta_k31 -minimum-contig-length 1000
 
 Contigs_gt1kb.fasta: RayMeta_k31/Contigs.fasta
 	cp $^ $@
@@ -80,7 +82,7 @@ samtools-index: GAIIx_Lane6.trimmomatic.bam.bai GAIIx_Lane7.trimmomatic.bam.bai 
 	bowtie2-build $^ $^
 
 %.trimmomatic.bam: %.trimmomatic_1P.fastq.gz %.trimmomatic_2P.fastq.gz
-	bowtie2 -X 1000 -p 32 --end-to-end --sensitive -x Contigs_gt1kb.fasta -1 $*.trimmomatic_1P.fastq.gz -2 $*.trimmomatic_2P.fastq.gz | samtools view -uT Contigs_gt1kb.fasta - | samtools sort -m 32G - $*.trimmomatic
+	bowtie2 -X 1000 -p $(THREADS) --end-to-end --sensitive -x Contigs_gt1kb.fasta -1 $*.trimmomatic_1P.fastq.gz -2 $*.trimmomatic_2P.fastq.gz | samtools view -uT Contigs_gt1kb.fasta - | samtools sort -m 32G - $*.trimmomatic
 
 %.bam.bai: %.bam
 	samtools index $^
