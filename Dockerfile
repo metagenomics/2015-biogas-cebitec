@@ -6,6 +6,7 @@ RUN mkdir /home/biogas
 ADD Makefile /home/biogas/Makefile
 ADD run.sh /home/biogas/run.sh
 
+
 #install ray
 RUN apt-get update
 RUN apt-get install -y openssh-server openmpi-bin
