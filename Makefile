@@ -3,8 +3,6 @@ all: check_bin download_data trimmomatic ray_meta prodigal bowtie2-build bowtie2
 # Number of threads for assembly and mapping.
 THREADS=32
 
-THREADS=8
-
 ###############
 # Check progs
 ###############
@@ -129,7 +127,7 @@ kegg-blastp:
 
 ###############
 # Read mapping (multitreaded)
-###############
+##############
 
 .PHONY: bowtie2-build bowtie2-run samtools-index
 bowtie2-build: Contigs_gt1kb.fasta.1.bt2 Contigs_gt1kb.fasta.2.bt2 Contigs_gt1kb.fasta.3.bt2 Contigs_gt1kb.fasta.4.bt2 Contigs_gt1kb.fasta.rev.1.bt2 Contigs_gt1kb.fasta.rev.2.bt2
