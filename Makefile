@@ -3,6 +3,8 @@ all: check_bin download_data trimmomatic ray_meta prodigal bowtie2-build bowtie2
 # Number of threads for assembly and mapping.
 THREADS=32
 
+THREADS=8
+
 ###############
 # Check progs
 ###############
@@ -95,7 +97,7 @@ MiSeq_%.trimmomatic_1P.fastq.gz MiSeq_%.trimmomatic_1U.fastq.gz MiSeq_%.trimmoma
 
 ###############
 # Assembly (multithreaded)
-###############
+##############
 
 .PHONY: ray_meta
 ray_meta: Contigs_gt1kb.fasta
@@ -139,7 +141,6 @@ samtools-index: GAIIx_Lane6.trimmomatic.bam.bai GAIIx_Lane7.trimmomatic.bam.bai 
 
 %.trimmomatic.bam: %.trimmomatic_1P.fastq.gz %.trimmomatic_2P.fastq.gz
 	bowtie2 -X 1000 -p $(THREADS) --end-to-end --sensitive -x Contigs_gt1kb.fasta -1 $*.trimmomatic_1P.fastq.gz -2 $*.trimmomatic_2P.fastq.gz | samtools view -uT Contigs_gt1kb.fasta - | samtools sort - $*.trimmomatic
-
 %.bam.bai: %.bam
 	samtools index $^
 
