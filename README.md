@@ -2,7 +2,7 @@
 
 Work in progress, to be finished asap!
 
-## How to run docker the container?
+## How to run the docker container?
 
 
 1. `docker pull 2015-biogas-cebitec`
