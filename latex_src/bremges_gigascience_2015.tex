@@ -298,44 +298,45 @@ Prior to the sampling process, approximately $15\,L$ of the fermenter substrate 
 
 Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}. A random-primed cDNA library was prepared by an external vendor (vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol.
 
-\subsection*{Sequencing and quality control}
+\subsection*{Metagenomic and metatranscriptomic sequencing}
 We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
 On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
 Our sequencing efforts, yielding $35$ gigabases in total, are specified in Table \ref{tReads}.
 
-We then used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
+\subsection*{Metagenome assembly and annotation}\todo{KEGG}
+Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
-Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of filtered sequence data passed quality control.
+Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of sequence data passed quality control.
 
-\subsection*{Metagenome assembly and annotation}
 We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
 This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
-Table \ref{tAssembly} summarizes our results.
 
 We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $250,596$ predicted genes, $191,766$ had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $xxx$ genes with an assigned KEGG Orthology.
+Table \ref{tAssembly} summarizes our results.
 
-\subsection*{Relating the metagenome and the metatranscriptome}\todo{TODO}
-To highlight potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We simply counted the number of reads aligned to all predicted gene with BEDTools, version 2.22.0, \cite{BEDTools}.
+\subsection*{Relating the metagenome and the metatranscriptome}\todo{RPKM}
+To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 
 Figure \ref{fPathway} as a toy example, highlighting genes in some pathway.
 
-Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage in RPKM units.
+Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage in RPKM units. There are three types of methanogenesis pathways, highlighted in different colors. Going from CO2 to methane appears to be predominant, which is in agreement with the literature.
 
 \section*{Availability}
 \subsection*{Data accession}
 The datasets supporting the results of this article are available in the European Nucleotide Archive (ENA) under study accession \href{http://www.ebi.ac.uk/ena/data/view/PRJEB8813}{PRJEB8813}.
-Intermediate results for the review process are deposited in the project's GitHub repository \cite{GitHub}.
-\todo[inline]{Data needs to be submitted to GigaDB (everything).}
 
-\subsection*{Reproducibility}\todo{TODO}
+Intermediate results for the review process are deposited in the project's GitHub repository \cite{GitHub}, and will be uploaded to GigaDB \cite{GigaDB} upon acceptance.
+
+\subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 Starting from the raw read files, all data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, all tools and dependencies are available in a single Docker container implementing the bioboxes assembly interface, version 0.8, from DockerHub.
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
+
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
-\section*{Discussion}\todo{TODO}
+\section*{Discussion}\todo{WRITE}
 Potential use cases.
 
 Metagenomic and metatranscriptomic profiling of the biogas-producing microbial community.
