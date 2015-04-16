@@ -321,7 +321,7 @@ To illustrate potential use cases, we aligned the post-QC sequencing reads to th
 
 Figure \ref{fPathway} as a toy example, highlighting genes in some pathway.
 
-Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage in RPKM units. There are three types of methanogenesis pathways, highlighted in different colors. Going from CO2 to methane appears to be predominant, which is in agreement with the literature.
+Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage of predicted genes in RPKM units. We highlighted all genes involved in either of the three known types of methanogenic pathways. Going from CO2 to methane appears to be predominant, which is in agreement with the literature.
 
 \section*{Availability}
 \subsection*{Data accession}
@@ -332,6 +332,7 @@ Intermediate results for the review process are deposited in the project's GitHu
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 Starting from the raw read files, all data and results can be reproduced by a simple invocation of \emph{make}.
+
 To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
