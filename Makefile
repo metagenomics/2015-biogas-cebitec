@@ -1,7 +1,6 @@
-# By default, run all steps. Triggers download if FastQ files are not found in 'input' dir.
-all: check_bin trimmomatic ray_meta prodigal bowtie2-build bowtie2-run samtools-index bedtools-multicov
+all: check_bin download_data trimmomatic ray_meta prodigal bowtie2-build bowtie2-run samtools-index bedtools-multicov
 
-# Number of threads for assembly and mapping. Please adjust according to your system.
+# Number of threads for assembly and mapping.
 THREADS=32
 
 ###############
@@ -24,8 +23,8 @@ check_bin:
 # Download data
 ###############
 
-.PHONY: download
-download: input/GAIIx_Lane6_R1.fastq.gz input/GAIIx_Lane6_R2.fastq.gz input/GAIIx_Lane7_R1.fastq.gz input/GAIIx_Lane7_R2.fastq.gz input/GAIIx_Lane8_R1.fastq.gz input/GAIIx_Lane8_R2.fastq.gz input/MiSeq_A1_R1.fastq.gz input/MiSeq_A1_R2.fastq.gz input/MiSeq_A2_R1.fastq.gz input/MiSeq_A2_R2.fastq.gz input/MiSeq_B1_R1.fastq.gz input/MiSeq_B1_R2.fastq.gz input/MiSeq_B2_R1.fastq.gz input/MiSeq_B2_R2.fastq.gz
+.PHONY: download_data
+download_data: input/GAIIx_Lane6_R1.fastq.gz input/GAIIx_Lane6_R2.fastq.gz input/GAIIx_Lane7_R1.fastq.gz input/GAIIx_Lane7_R2.fastq.gz input/GAIIx_Lane8_R1.fastq.gz input/GAIIx_Lane8_R2.fastq.gz input/MiSeq_A1_R1.fastq.gz input/MiSeq_A1_R2.fastq.gz input/MiSeq_A2_R1.fastq.gz input/MiSeq_A2_R2.fastq.gz input/MiSeq_B1_R1.fastq.gz input/MiSeq_B1_R2.fastq.gz input/MiSeq_B2_R1.fastq.gz input/MiSeq_B2_R2.fastq.gz
 
 input:
 	mkdir -p input
