@@ -47,7 +47,7 @@
 \documentclass{bmcart}
 
 %%% Load packages
-%\usepackage{amsthm,amsmath}
+\usepackage{amsthm,amsmath}
 %\RequirePackage{natbib}
 \RequirePackage{hyperref}
 \usepackage[utf8]{inputenc} %unicode support
@@ -303,7 +303,7 @@ We sequenced one metatranscriptome and two metagenome shotgun libraries on Illum
 On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
 Our sequencing efforts, yielding $35$ gigabases in total, are specified in Table \ref{tReads}.
 
-\subsection*{Metagenome assembly and annotation}\todo{KEGG}
+\subsection*{Metagenome assembly and annotation}
 Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of sequence data passed quality control.
@@ -312,8 +312,8 @@ We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a
 This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
 
 We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
-Of the $250,596$ predicted genes, $191,766$ had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
-We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $xxx$ genes with an assigned KEGG Orthology.
+Of the $250,596$ predicted genes, $191,766$ ($76.5\,\%$) had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
+We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $109,501$ genes with an assigned KEGG Orthology.
 Table \ref{tAssembly} summarizes our results.
 
 \subsection*{Relating the metagenome and the metatranscriptome}\todo{RPKM}
@@ -321,7 +321,7 @@ To illustrate potential use cases, we aligned the post-QC sequencing reads to th
 
 Figure \ref{fPathway} as a toy example, highlighting genes in some pathway.
 
-Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage of predicted genes in RPKM units. We highlighted all genes involved in either of the three known types of methanogenic pathways. Going from CO2 to methane appears to be predominant, which is in agreement with the literature.
+Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage of predicted genes in RPKM units. We highlighted all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be predominant, which is in agreement with the literature.
 
 \section*{Availability}
 \subsection*{Data accession}
@@ -331,9 +331,8 @@ Intermediate results for the review process are deposited in the project's GitHu
 
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
-Starting from the raw read files, all data and results can be reproduced by a simple invocation of \emph{make}.
-
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
+All data and results can be reproduced by a simple invocation of \emph{make}.
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.\todo{docker stats}
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
@@ -414,14 +413,14 @@ AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Indu
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{map00680_cropped}
-\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?map00680}{map00680}], are highlighted: Genes with only metagenomic support in yellow, genes with also metatranscriptomic support, suggesting gene expression, in orange.
+\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?ko00680}{ko00680}], are highlighted: Genes with only metagenomic support in yellow, genes with also metatranscriptomic support, suggesting active gene expression, in orange.
 Base pathway image copyrighted by Kanehisa Laboratories.}
 \label{fPathway}
 \end{figure}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Rplot}
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO2 to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($N = 176$), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($N = 72$), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($N = 289$).}
+\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($176$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($72$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($289$ genes).}
 \label{fCoverage}
 \end{figure}
 
@@ -510,15 +509,12 @@ Largest contig & $333,979\,bp$\\
 \hline
 Predicted genes & $250,596$\\
 of these, full-length & $172,372\,(69\,\%)$\\
-Match in KEGG Genes (10) & $241,153$\\
-Match in KEGG Genes (1e-3) & $200,214$\\
-Match in KEGG Genes (1e-6) & $191,766$\\
-Match in KEGG Genes (1e-9) & $184,251$\\
-of these, assigned KO & $xxx,xxx$\\
+Match in KEGG Genes & $191,766$\\
+of these, assigned KO & $109,501$\\
+of these, in KEGG pathways & $61,100$\\
 \hline
 \end{tabular}
 \label{tAssembly}
-\todo[inline]{KOs to be added asap, see above.}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
