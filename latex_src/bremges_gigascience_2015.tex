@@ -316,12 +316,11 @@ Of the $250,596$ predicted genes, $191,766$ ($76.5\,\%$) had a match in the KEGG
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $109,501$ genes with an assigned KEGG Orthology.
 Table \ref{tAssembly} summarizes our results.
 
-\subsection*{Relating the metagenome and the metatranscriptome}\todo{RPKM}
-To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
+\subsection*{Relating the metagenome and the metatranscriptome}
+To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
 
-Figure \ref{fPathway} as a toy example, highlighting genes in some pathway.
-
-Figure \ref{fCoverage} shows metagenomic vs. metatranscriptomic coverage of predicted genes in RPKM units. We highlighted all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be predominant, which is in agreement with the literature.
+For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
+Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be the highest expressed, which is in agreement with the literature.\todo{Citation needed. Also, probably too much of a statement.}
 
 \section*{Availability}
 \subsection*{Data accession}
@@ -332,7 +331,7 @@ Intermediate results for the review process are deposited in the project's GitHu
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.\todo{docker stats}
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.\todo{@Peter: Runtime Metrics}
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
@@ -370,7 +369,8 @@ All authors read and approved the final manuscript.
 \section*{Acknowledgements}
 AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
 \todo[inline]{ASch: Biogas Marker, Biogas Core}
-\todo[inline]{Acknowledge Stadtwerke?}
+\todo[inline]{Probably acknowledge Stadtwerke Bielefeld?}
+\todo[inline]{Anything/anyone else?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
