@@ -117,34 +117,41 @@
 
 \author[
    addressref={cebitec,techfak},
-%   corref={cebitec},
+   corref={cebitec},
    email={abremges@cebitec.uni-bielefeld.de}
 ]{\inits{AB}\fnm{Andreas} \snm{Bremges}}
 \author[
-   addressref={cebitec}
+   addressref={cebitec},
+   email={irena.maus@cebitec.uni-bielefeld.de}
 ]{\inits{IM}\fnm{Irena} \snm{Maus}}
 \author[
-   addressref={techfak}
+   addressref={cebitec,techfak},
+   email={pbelmann@cebitec.uni-bielefeld.de}
 ]{\inits{PB}\fnm{Peter} \snm{Belmann}}
 \author[
-   addressref={cebitec}
+   addressref={cebitec},
+   email={feikmeye@cebitec.uni-bielefeld.de}
 ]{\inits{FE}\fnm{Felix} \snm{Eikmeyer}}
 \author[
-   addressref={cebitec}
+   addressref={cebitec},
+   email={awinkler@cebitec.uni-bielefeld.de}
 ]{\inits{AW}\fnm{Anika} \snm{Winkler}}
 \author[
-   addressref={cebitec}
+   addressref={cebitec},
+   email={aalbersm@cebitec.uni-bielefeld.de}
 ]{\inits{AA}\fnm{Andreas} \snm{Albersmeier}}
 \author[
-   addressref={cebitec}
+   addressref={cebitec},
+   email={puehler@cebitec.uni-bielefeld.de}
 ]{\inits{AP}\fnm{Alfred} \snm{Pühler}}
 \author[
    addressref={cebitec},
-   noteref={n1}
+   noteref={n1},
+   email={aschluet@cebitec.uni-bielefeld.de}
 ]{\inits{ASch}\fnm{Andreas} \snm{Schlüter}}
 \author[
    addressref={cebitec,techfak},
-   corref={cebitec},
+%   corref={cebitec},
    noteref={n1},
    email={asczyrba@cebitec.uni-bielefeld.de}
 ]{\inits{AScz}\fnm{Alexander} \snm{Sczyrba}}
@@ -320,30 +327,29 @@ Table \ref{tAssembly} summarizes our results.
 To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
 
 For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
-Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be the highest expressed, which is in agreement with the literature.\todo{Citation needed. Also, probably too much of a statement.}
+Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be the highest expressed, which is in agreement with the literature.
+\todo[inline]{@Andreas S: Citation needed. Also, probably too much of a statement?}
+
+\section*{Discussion}
+
+We report extensive metagenomic and metatranscriptomic profiling of the microbial community from a production-scale biogas plant. We believe our data are of great interest to the biogas research community in general and microbiologists working on biogas-producing microbial communities in particular.
+In a first applied study, our metagenome assembly was used to improve the characterization of a metaproteome generated from biogas plant sludge material and to investigate the metabolic activity of the microbial community \cite{Kohrs2015}.
+
+By sharing our data, we want to actively encourage independent research and also new collaborations within the biogas research community. This will hopefully result in novel biological insights, eventually enabling more efficient biogas production.
 
 \section*{Availability}
 \subsection*{Data accession}
 The datasets supporting the results of this article are available in the European Nucleotide Archive (ENA) under study accession \href{http://www.ebi.ac.uk/ena/data/view/PRJEB8813}{PRJEB8813}.
 
-Intermediate results for the review process are deposited in the project's GitHub repository \cite{GitHub}, and will be uploaded to GigaDB \cite{GigaDB} upon acceptance.
+\emph{Intermediate results for the review process are deposited in the project's GitHub repository for now \cite{GitHub}, and will be uploaded to GigaDB \cite{GigaDB} upon acceptance.}
 
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.\todo{@Peter: Runtime Metrics}
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
-
-\section*{Discussion}\todo{WRITE}
-Potential use cases.
-
-Metagenomic and metatranscriptomic profiling of the biogas-producing microbial community.
-Highlight, that methane metabolism pathway is widely covered, but still room for improvement, i.e. sequence deeper.
-
-Identification of metaproteomic data out there \cite{Kohrs2015}.
-
-Ultimate goal: process optimization by biological insights.
+\todo[inline]{@Peter: Insert Docker runtime metrics, estimating time/memory requirements.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -368,9 +374,9 @@ All authors read and approved the final manuscript.
 
 \section*{Acknowledgements}
 AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
-\todo[inline]{ASch: Biogas Marker, Biogas Core}
-\todo[inline]{Probably acknowledge Stadtwerke Bielefeld?}
-\todo[inline]{Anything/anyone else?}
+\todo[inline]{@Andreas S: I need your text to acknowledge Biogas Marker \& Biogas Core}
+\todo[inline]{@Alf: Should we acknowledge support from Stadtwerke Bielefeld?}
+\todo[inline]{@All: Did I forget about anything/anyone?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
@@ -394,6 +400,8 @@ AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Indu
 % \begin{thebibliography}
 % \bibitem{b1}
 % \end{thebibliography}
+\todo[inline]{GitHub and DockerHub repositories are still private and don't have a DOI.}
+\todo[inline]{The GigaDB repository can be requested after the paper got accepted.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -409,6 +417,8 @@ AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Indu
 %%
 %% Do not use \listoffigures as most will included as separate files
 
+% TODO remove newpage
+\newpage
 \section*{Figures}
 \begin{figure}[h!]
 \centering
@@ -433,6 +443,8 @@ Base pathway image copyrighted by Kanehisa Laboratories.}
 %% Use of \listoftables is discouraged.
 %%
 
+% TODO remove newpage
+\newpage
 \section*{Tables}
 \begin{table}[h!]
 \caption{Characteristics of the studied biogas plant. Primary digester, sampling date: Nov 15, 2010.}
