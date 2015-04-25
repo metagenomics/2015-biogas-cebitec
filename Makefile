@@ -10,7 +10,7 @@ THREADS=32
 .PHONY .SILENT: check_bin
 check_bin:
 	command -v wget >/dev/null 2>&1 || { echo >&2 "wget not found. Aborting."; exit 1; }
-	command -v java >/dev/null 2>&1 || { echo >&2 "wget not found. Aborting."; exit 1; }
+	command -v java >/dev/null 2>&1 || { echo >&2 "java not found. Aborting."; exit 1; }
 	command -v mpiexec >/dev/null 2>&1 || { echo >&2 "mpiexec not found. Aborting."; exit 1; }
 	command -v Ray >/dev/null 2>&1 || { echo >&2 "Ray not found. Aborting."; exit 1; }
 	command -v prodigal >/dev/null 2>&1 || { echo >&2 "prodigal not found. Aborting."; exit 1; }
