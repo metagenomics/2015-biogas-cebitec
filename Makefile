@@ -3,6 +3,7 @@ all: check_bin download_data trimmomatic ray_meta prodigal bowtie2-build bowtie2
 # Number of threads for assembly and mapping.
 THREADS=32
 
+
 ###############
 # Check progs
 ###############

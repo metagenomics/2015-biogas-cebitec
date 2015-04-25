@@ -22,8 +22,7 @@ RUN apt-get install bowtie2
 RUN apt-get install samtools
 
 #install trimmomatic
-RUN apt-get install -y openjdk-7-jre
-RUN apt-get install unzip
+RUN apt-get install -y unzip openjdk-7-jre
 RUN wget -O /opt/bin/trimmomatic.zip http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
 RUN unzip /opt/bin/trimmomatic.zip -d /opt/bin
 RUN mv /opt/bin/Trimmomatic-0.32/trimmomatic-0.32.jar  /home/biogas/
@@ -38,6 +37,5 @@ RUN apt-get install make
 #set path
 ENV PATH /opt/bin:$PATH
 
-WORKDIR /home/biogas
 ENTRYPOINT ["/bin/bash","/home/biogas/run.sh"]
 CMD ["8"]
