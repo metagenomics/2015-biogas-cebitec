@@ -57,4 +57,3 @@ Per default the container runs with 32 threads. You can change this by providing
 Example:
 
 `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec 32`
-
