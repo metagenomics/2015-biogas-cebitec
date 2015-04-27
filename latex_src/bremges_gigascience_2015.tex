@@ -346,7 +346,7 @@ The datasets supporting the results of this article are available in the Europea
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container. Reproduction requires roughly $74\,GiB$ of memory for the metagenome assembly.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 \todo[inline]{@Peter: Insert Docker runtime metrics, estimating time/memory requirements.}
