@@ -325,6 +325,7 @@ Table \ref{tAssembly} summarizes our results.
 
 \subsection*{Relating the metagenome and the metatranscriptome}
 To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
+\todo[inline]{Take-home message? The pathway is almost covered.}
 
 For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be the highest expressed, which is in agreement with the literature.
@@ -374,7 +375,7 @@ All authors read and approved the final manuscript.
 
 \section*{Acknowledgements}
 AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
-\todo[inline]{@Andreas S: I need your text to acknowledge Biogas Marker \& Biogas Core}
+Funding by the German Federal Ministry of Food and Agriculture (BMEL), grant number 22006712 (joint research project Biogas-Core) and the German Federal Ministry of Education and Research (BMBF), grant number 03SF0440C (joint research project Biogas-Marker) is gratefully acknowledged.
 \todo[inline]{@Alf: Should we acknowledge support from Stadtwerke Bielefeld?}
 \todo[inline]{@All: Did I forget about anything/anyone?}
 
