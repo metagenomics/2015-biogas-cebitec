@@ -211,11 +211,11 @@
 
 \begin{abstract} % abstract
 \parttitle{Background}
-The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter, with most participating microbes still considered unknown and non-cultivable. Accordingly, metagenome sequencing is currently the only possibility to obtain insights into community composition and the genetic repertoire.
+The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter. Most of the participating microbes still have to be considered as unknown and non-cultivable. Accordingly, metagenome sequencing currently is the only possibility to obtain insights into community composition and the genetic repertoire.
 %a presentation of the interest or relevance of these data for the broader community
 %
 \parttitle{Findings}
-Here, we report the first deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis populated by low-abundance archaea. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
+Here, we report the first deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis performed by methanogenic \emph{Archaea}. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
 %a very brief preview of the data type(s) produced, the methods used, and information relevant to data validation
 %
 \parttitle{Conclusions}
@@ -281,11 +281,11 @@ Sequenced at least one order of magnitude deeper than previous studies, our meta
 Production of biogas by means of anaerobic digestion of biomass is becoming increasingly important as biogas is regarded a clean, renewable and environmentally compatible energy source \cite{Weiland2010}. Moreover, generation of energy from biogas relies on a balanced carbon dioxide cycle.
 
 The process of biogas production takes place under anaerobic conditions and involves microbial decomposition of organic matter, yielding methane as the main final product of the fermentation process. Complex consortia of microorganisms are responsible for biomass decomposition and biogas production.
-The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA is currently the only way to obtain unbiased insights into community composition and the genetic potential of key community members.
+The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA currently is the only way to obtain unbiased insights into community composition and the genetic potential of key community members.
 
 Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaDB}.
 We sequenced $27.3 \times$ and $19.3 \times$ deeper, respectively, than previous studies applying 454 or SOLiD sequencing \cite{Jaenicke2011, Wirth2012}. Metatranscriptomic sequencing of total community RNA complements the metagenome.
-Combined, these data will enable a deeper exploration of the biogas-producting microbial community, with the objective to develop rational strategies for process optimization.
+Combined, these data will enable a deeper exploration of the biogas-producing microbial community, with the objective to develop rational strategies for process optimization.
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
 %SOLiD \cite{Wirth2012}: 23,897,590 reads, 1,194,879,500 bases: factor of 19.3 more
 %No idea about the 454 data from Solli, 2014: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA261310
@@ -308,7 +308,7 @@ Aliquots of $20\,g$ of the fermentation sample were used for total community DNA
 \subsection*{Metagenomic and metatranscriptomic sequencing}
 We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
 On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
-Our sequencing efforts, yielding $35$ gigabases in total, are specified in Table \ref{tReads}.
+Our sequencing efforts, yielding $35$ gigabases in total, are summarized in Table \ref{tReads}.
 
 \subsection*{Metagenome assembly and annotation}
 Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
@@ -327,13 +327,14 @@ Table \ref{tAssembly} summarizes our results.
 To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}. We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
 
 For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
-Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways. Going from CO$_{\text{2}}$ to methane appears to be the highest expressed, which is in agreement with the literature.
-\todo[inline]{@Andreas S: Citation needed. Also, probably too much of a statement?}
+Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways.
+Reduction of CO$_{\text{2}}$ with hydrogen (hydrogenotrophic methanogenesis) appeared to be highly expressed in the analyzed reactor, which is in agreement with the literature \cite{Zakrzewski2012}.
 
 \section*{Discussion}
 
-We report extensive metagenomic and metatranscriptomic profiling of the microbial community from a production-scale biogas plant. We believe our data are of great interest to the biogas research community in general and microbiologists working on biogas-producing microbial communities in particular.
-In a first applied study, our metagenome assembly was used to improve the characterization of a metaproteome generated from biogas plant sludge material and to investigate the metabolic activity of the microbial community \cite{Kohrs2015}.
+We report extensive metagenomic and metatranscriptomic profiling of the microbial community from a production-scale biogas plant.
+Given the unprecedented sequencing depth and established bioinformatics, our data are of great interest to the biogas research community in general and microbiologists working on biogas-producing microbial communities in particular.
+In a first applied study, our metagenome assembly was used to improve the characterization of a metaproteome generated from biogas plant fermentation samples and to investigate the metabolic activity of the microbial community \cite{Kohrs2015}.
 
 By sharing our data, we want to actively encourage its reuse. This will hopefully result in novel biological and biotechnological insights, eventually enabling a more efficient biogas production.
 
