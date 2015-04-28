@@ -211,7 +211,7 @@
 
 \begin{abstract} % abstract
 \parttitle{Background}
-The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter. Most of the participating microbes still have to be considered as unknown and non-cultivable. Accordingly, metagenome sequencing currently is the only possibility to obtain insights into community composition and the genetic repertoire.
+The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter. Most of the participating microbes still have to be considered as unknown and non-cultivable. Accordingly, metagenome sequencing currently is the method of choice to obtain insights into community composition and the genetic repertoire.
 %a presentation of the interest or relevance of these data for the broader community
 %
 \parttitle{Findings}
@@ -281,7 +281,7 @@ Sequenced at least one order of magnitude deeper than previous studies, our meta
 Production of biogas by means of anaerobic digestion of biomass is becoming increasingly important as biogas is regarded a clean, renewable and environmentally compatible energy source \cite{Weiland2010}. Moreover, generation of energy from biogas relies on a balanced carbon dioxide cycle.
 
 The process of biogas production takes place under anaerobic conditions and involves microbial decomposition of organic matter, yielding methane as the main final product of the fermentation process. Complex consortia of microorganisms are responsible for biomass decomposition and biogas production.
-The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA currently is the only way to obtain unbiased insights into community composition and the genetic potential of key community members.
+The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA currently is the best way to obtain unbiased insights into community composition and the metabolic potential of key community members.
 
 Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaDB}.
 We sequenced $27.3 \times$ and $19.3 \times$ deeper, respectively, than previous studies applying 454 or SOLiD sequencing \cite{Jaenicke2011, Wirth2012}. Metatranscriptomic sequencing of total community RNA complements the metagenome.
@@ -299,11 +299,13 @@ The biogas and methane yields at the time of sampling were at $810.5$ and $417.8
 After a theoretical retention time of $55$ days, the digestate is stored in the closed, non-heated final storage tank.
 Further metadata are summarized in Table \ref{tBiogasPlant}.
 
-\subsection*{Sampling and nucleic acid isolation}
+\subsection*{Sampling and library construction}
 Samples from the primary digester of the aforementioned biogas plant were taken in November 2010.
-Prior to the sampling process, approximately $15\,L$ of the fermenter substrate were discarded before aliquots of $1\,L$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
+Prior to the sampling process, approximately $15\,l$ of the fermenter substrate were discarded before aliquots of $1\,l$ were transferred into clean gastight sampling vessels and transported directly to the laboratory.
 
-Aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}. A random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol.
+For the metagenome, aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
+
+For the metatranscriptome, a random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol.
 
 \subsection*{Metagenomic and metatranscriptomic sequencing}
 We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
@@ -328,7 +330,7 @@ To illustrate potential use cases, we aligned the post-QC sequencing reads to th
 
 For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 Figure \ref{fCoverage} relates the two. Here, we accentuated all genes involved in either of the three known types of methanogenic pathways.
-Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appeared to be highly expressed in the reactor analyzed, which is in agreement with the literature \cite{Zakrzewski2012}.
+Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with previous work \cite{Zakrzewski2012}.
 
 \section*{Discussion}
 
