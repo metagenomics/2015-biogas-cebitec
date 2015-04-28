@@ -329,7 +329,7 @@ Table \ref{tAssembly} summarizes our results.
 To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}. We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
 
 For a second example, we calculated the RPKM values for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
-Figure \ref{fCoverage} relates the two. Here, we accentuated all genes uniquely assigned to either of the three known types of methanogenic pathways.
+Figure \ref{fCoverage} relates the two. Here, we accentuated all genes assigned to either of the three known types of methanogenic pathways.
 Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with previous work \cite{Zakrzewski2012}.
 
 \section*{Discussion}
@@ -430,7 +430,7 @@ Base pathway image copyrighted by Kanehisa Laboratories.}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Rplot}
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes).}
+\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes). Genes ambiguously assigned to more than one module are yellow ($80$ genes).}
 \label{fCoverage}
 \end{figure}
 
