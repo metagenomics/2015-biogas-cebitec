@@ -26,7 +26,7 @@ Please take a look at the [Makefile](Makefile). It downloads all data and re-run
 
 #### How to run the docker container?
 
-1. `docker pull 2015-biogas-cebitec`
+1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
      
 Per default the container runs with 48 threads for Ray and 8 threads for Bowtie & Trimmomatic. You can change this by providing the following arguments after the docker name:
