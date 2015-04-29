@@ -14,4 +14,4 @@ fi
 
 make THREADS_RAY=$1 THREADS_MISC=$2
 
-mv !(run.sh|Makefile|trimmomatic-0.32.jar|input|output) /home/biogas/output
+mv !(run.sh|Makefile|trimmomatic-0.32.jar|Trimmomatic-0.32.zip|TruSeq*|NexteraPE-PE.fa|input|output) /home/biogas/output
