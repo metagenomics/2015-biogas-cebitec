@@ -41,4 +41,3 @@ ENV PATH /opt/bin:$PATH
 
 WORKDIR /home/biogas
 ENTRYPOINT ["/bin/bash","/home/biogas/run.sh"]
-CMD ["48","8"]
