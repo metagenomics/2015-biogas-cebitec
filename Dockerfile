@@ -6,11 +6,10 @@ RUN mkdir /home/biogas
 ADD Makefile /home/biogas/Makefile
 ADD run.sh /home/biogas/run.sh
 
-
 #install ray
 RUN apt-get update
 RUN apt-get install -y openssh-server openmpi-bin
-ADD bin/Ray /opt/bin/Ray
+RUN apt-get install Ray
 
 #install prodigal
 RUN wget -O /opt/bin/prodigal https://github.com/hyattpd/Prodigal/releases/download/v2.6.2/prodigal.linux
@@ -24,11 +23,6 @@ RUN apt-get install samtools
 
 #install trimmomatic
 RUN apt-get install -y openjdk-7-jre
-RUN apt-get install unzip
-RUN wget -O /opt/bin/trimmomatic.zip http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
-RUN unzip /opt/bin/trimmomatic.zip -d /opt/bin
-RUN mv /opt/bin/Trimmomatic-0.32/trimmomatic-0.32.jar  /home/biogas/
-RUN cp /opt/bin/Trimmomatic-0.32/adapters/* /home/biogas
 
 #install bedtools
 RUN apt-get install -y bedtools 
