@@ -137,13 +137,15 @@ prodigal: Contigs_gt1kb.prodigal.faa Contigs_gt1kb.prodigal.fna Contigs_gt1kb.pr
 	prodigal -p meta -a Contigs_gt1kb.prodigal.faa -d Contigs_gt1kb.prodigal.fna -f gff -o Contigs_gt1kb.prodigal.gff -i $^
 
 ###############
-# BLASTP against KEGG (only described)
+# BLASTP against KEGG genes (only described)
 ###############
 
-.PHONY .SILENT: kegg-blastp
-kegg-blastp:
+.PHONY: kegg-blastp
+.SILENT kegg-blastp: Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv
+
+Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv:
 	echo 'We distributed BLASTP-jobs on our compute cluster. A simplified command, reproducing the results but running several weeks, looks like this:'
-	echo 'blastp -max_target_seqs 1 -outfmt 6 -query Contigs_gt1kb.prodigal.faa -out Contigs_gt1kb.prodigal.faa.blastout.tab -db /path/to/kegg/blastdb'
+	echo 'blastp -max_target_seqs 1 -outfmt 6 -query Contigs_gt1kb.prodigal.faa -out Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv -db /path/to/kegg/blastdb'
 
 ###############
 # Read mapping (multithreaded: THREADS_MISC)
@@ -172,3 +174,13 @@ bedtools-multicov: Contigs_gt1kb.prodigal.gff Contigs_gt1kb.prodigal.gff.bedtool
 
 Contigs_gt1kb.prodigal.gff.bedtools.tsv: GAIIx_Lane6.trimmomatic.bam GAIIx_Lane7.trimmomatic.bam GAIIx_Lane8.trimmomatic.bam MiSeq_A1.trimmomatic.bam MiSeq_A2.trimmomatic.bam MiSeq_B1.trimmomatic.bam MiSeq_B2.trimmomatic.bam
 	bedtools multicov -bams $^ -bed Contigs_gt1kb.prodigal.gff > $@
+
+###############
+# Annotate results: KOs, modules, pathways
+###############
+
+.PHONY: kegg-annotate
+kegg-annotate: Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv
+
+Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv: annotate.pl genes_ko.list ko_module.list ko_pathway.list Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv Contigs_gt1kb.prodigal.gff.bedtools.tsv
+	perl annotate.pl > $@
