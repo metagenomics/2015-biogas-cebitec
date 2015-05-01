@@ -22,7 +22,21 @@ j | k | l
 
 ### Reproducibility
 
-Please take a look at the [Makefile](Makefile). It downloads all data and re-runs all steps to reproduce my results (excluding the KEGG analyses, unfortunately). [@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container. I will add more information soon.
+Please take a look at the [Makefile](Makefile). It downloads all data and re-runs all steps to reproduce my results (excluding the KEGG analyses, unfortunately). [@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container.
+
+#### How to run the docker container?
+
+1. `docker pull metagenomics/2015-biogas-cebitec`
+2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
+     
+Per default the container runs with 48 threads for Ray and 8 threads for Bowtie & Trimmomatic. You can change this by providing the following arguments after the docker name:
+   
+   * --threads-ray=NUMBER for Ray
+   * --threads-misc=NUMBER for Bowtie and Trimmomatic
+
+Example:
+
+`docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec --threads-ray=16 --threads-misc=16`
 
 If you have any questions or run into problems, please file an [issue](https://github.com/abremges/2015-biogas-cebitec/issues)!
 
