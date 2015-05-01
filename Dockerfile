@@ -8,10 +8,10 @@ ADD run.sh /home/biogas/run.sh
 
 #install ray
 RUN apt-get update
-RUN apt-get install -y openssh-server openmpi-bin
-RUN apt-get install Ray
+RUN apt-get install -y wget openssh-server openmpi-bin Ray
 
 #install prodigal
+RUN mkdir /opt/bin
 RUN wget -O /opt/bin/prodigal https://github.com/hyattpd/Prodigal/releases/download/v2.6.2/prodigal.linux
 RUN chmod a+x /opt/bin/prodigal
 
