@@ -4,8 +4,6 @@ Work in progress, to be finished asap!
 
 ### Data for review
 
-In the folder [raw_data](raw_data), you can find the following files:
-
 File | Description | Analysis step
 --- | --- | ---
 [Contigs_gt1kb.fasta.gz](raw_data/Contigs_gt1kb.fasta.gz) | Assembled contigs | RayMeta assembly
@@ -16,7 +14,7 @@ File | Description | Analysis step
 [Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
 [Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
 
-These data will be submitted to GigaDB eventually.
+All these data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
 
 ### Availablility
 
