@@ -1,8 +1,12 @@
-# 2015-biogas-cebitec
+# Data availablility
 
-Work in progress, to be finished asap!
+### Metagenomic and metatranscriptomic sequencing
 
-### Data for review
+The datasets supporting the results of this article are available in the European Nucleotide Archive (ENA) under study accession [PRJEB8813](http://www.ebi.ac.uk/ena/data/view/PRJEB8813).
+
+Please refer to Table 2 in [our manuscript](latex_src/bremges_gigascience_2015.pdf) for a detailed description of our metagenomic and metatranscriptomic sequencing efforts.
+
+### Intermediate results for the review process
 
 File | Description | Analysis step
 --- | --- | ---
@@ -14,21 +18,19 @@ File | Description | Analysis step
 [Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
 [Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
 
-All these data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
+All data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
 
-### Availablility
+# Reproducibility
 
-Here, I will provide a description of the raw data, available from ENA.
+Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
-g | h | i
---- | --- | ---
-j | k | l
+### Makefile
 
-### Reproducibility
+The complete workflow is organized in a single GNU [Makefile](Makefile). It downloads all data and re-runs all steps to reproduce the results. Thus, all data and results can be reproduced by a simple invocation of `make`.
 
-Please take a look at the [Makefile](Makefile). It downloads all data and re-runs all steps to reproduce my results (excluding the KEGG analyses, unfortunately). [@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container.
+### Docker container
 
-#### How to run the docker container?
+[@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container.
 
 1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
@@ -42,8 +44,6 @@ Example:
 
 `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec --threads-ray=16 --threads-misc=16`
 
-If you have any questions or run into problems, please file an [issue](https://github.com/abremges/2015-biogas-cebitec/issues)!
+--
 
-### The manuscript
-
-In the folder [latex_src](latex_src), you can find the [manuscript's draft](latex_src/bremges_gigascience_2015.pdf) along with all LaTex source files and figures.
+**If you have any questions or run into problems, please file an [issue](https://github.com/abremges/2015-biogas-cebitec/issues)!**
