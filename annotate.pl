@@ -43,12 +43,12 @@ close $file;
 open($file, '<:encoding(UTF-8)', 'Contigs_gt1kb.prodigal.faa.bedtools.tsv') or die $!;
 while (my $line = <$file>) {
 	chomp $line;
+	$line =~ m/^(contig-\d+).*ID=(\d+)_(\d+)/;
+	my $gene_id = $1 . "_" . $3;
 	my @tmp = split('\t', $line);
-	if ($tmp[0] ne "id") {
-		$hash{$tmp[0]}{'len'} = $tmp[1];
-		$hash{$tmp[0]}{'dna'} = $tmp[3];
-		$hash{$tmp[0]}{'rna'} = $tmp[2];
-	}
+	$hash{$gene_id}{'len'} = $tmp[4]-$tmp[3];
+	$hash{$gene_id}{'dna'} = $tmp[10]+$tmp[11]+$tmp[12]+$tmp[13]+$tmp[14]+$tmp[15];
+	$hash{$gene_id}{'rna'} = $tmp[9];
 }
 close $file;
 
