@@ -6,9 +6,15 @@ Work in progress, to be finished asap!
 
 In the folder [raw_data](raw_data), you can find the following files:
 
-a | b | c
+File | Description | Analysis step
 --- | --- | ---
-d | e | f
+[Contigs_gt1kb.fasta.gz](raw_data/Contigs_gt1kb.fasta.gz) | Assembled contigs | RayMeta assembly
+[Contigs_gt1kb.prodigal.gff.gz](raw_data/Contigs_gt1kb.prodigal.gff.gz) | Genes in GFF format | Gene prediction
+[Contigs_gt1kb.prodigal.fna.gz](raw_data/Contigs_gt1kb.prodigal.fna.gz) | Nucleotide sequences | Gene prediction
+[Contigs_gt1kb.prodigal.faa.gz](raw_data/Contigs_gt1kb.prodigal.faa.gz) | Protein translations | Gene prediction
+[Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv.gz) | Tabular BLAST output | BLASTP vs. KEGG
+[Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
+[Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
 
 These data will be submitted to GigaDB eventually.
 
