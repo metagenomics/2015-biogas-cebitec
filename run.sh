@@ -5,7 +5,7 @@ shopt -s extglob
 #terminate after first line that fails
 set -e 
 
-THREADS_RAY=48
+THREADS_RAY=8
 THREADS_MISC=8
 
 for i in "$@"
@@ -32,4 +32,4 @@ fi
 
 make THREADS_RAY=$THREADS_RAY THREADS_MISC=$THREADS_MISC
 
-mv !(run.sh|Makefile|trimmomatic-0.32.jar|Trimmomatic-0.32.zip|TruSeq*|NexteraPE-PE.fa|input|output) /home/biogas/output
+mv !(run.sh|Makefile|trimmomatic-0.32.jar|Trimmomatic-0.32.zip|TruSeq2-PE.fa|NexteraPE-PE.fa|input|output) /home/biogas/output
