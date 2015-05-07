@@ -26,7 +26,7 @@ Excluding the KEGG analysis, which relies on a commercial license of the KEGG da
 
 ### Makefile
 
-The complete workflow is organized in a single GNU [Makefile](Makefile). It downloads all data and re-runs all steps to reproduce the results. Thus, all data and results can be reproduced by a simple invocation of `make`.
+The complete workflow is organized in a single GNU [Makefile](Makefile). It downloads all data and re-runs all analysis steps (w/o the time-consuming BLASTP search against KEGG, for that please adjust the Makefile). Thus, all data and results can be reproduced by a simple invocation of `make`.
 
 ### Docker container
 
