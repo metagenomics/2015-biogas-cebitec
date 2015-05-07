@@ -37,7 +37,8 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
      
-Per default the container runs with 48 threads for Ray and 8 threads for Bowtie & Trimmomatic. You can change this by providing the following arguments after the docker name:
+Per default the container runs with 8 threads for Ray, Trimmomatic, and Bowtie2 and a serial execution of `make`.
+You can change this by providing the following arguments after the docker name:
    
    * --threads-ray=NUMBER for Ray
    * --threads-misc=NUMBER for Bowtie and Trimmomatic
