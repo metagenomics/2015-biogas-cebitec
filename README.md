@@ -32,7 +32,7 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 
 ### Docker container
 
-[@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container.
+[@pbelmann](https://github.com/pbelmann) implemented and tested the [accompanying Docker container](https://registry.hub.docker.com/u/metagenomics/2015-biogas-cebitec).
 
 1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
