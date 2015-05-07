@@ -28,6 +28,8 @@ Excluding the KEGG analysis, which relies on a commercial license of the KEGG da
 
 The complete workflow is organized in a single GNU [Makefile](Makefile). It downloads all data and re-runs all analysis steps (w/o the time-consuming BLASTP search against KEGG, for that please adjust the Makefile). All data and results can be reproduced by a simple invocation of `make`.
 
+By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read preprocessing (*Trimmomatic*) and mapping (*Bowtie2*) with 8 threads each. This suits e.g. a single-node machine with 48 cores and parallel execution of make with `make -j`. Please adjust the default values accordingly.
+
 ### Docker container
 
 [@pbelmann](https://github.com/pbelmann) implemented and tested the accompanying Docker container.
