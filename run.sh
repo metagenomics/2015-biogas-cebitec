@@ -19,11 +19,4 @@ case $i in
 esac
 done
 
-OUTPUT=/home/biogas/output
-
-if [ ! -d "$OUTPUT" ]; then
-	echo "$OUTPUT does not exist or is empty."
-	exit 1
-fi
-
 make THREADS_RAY=$THREADS THREADS_MISC=$THREADS WORKING_DIR="/home/biogas"
