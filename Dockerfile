@@ -8,7 +8,7 @@ ADD run.sh /home/biogas/run.sh
 
 #install ray
 RUN apt-get update
-RUN apt-get install -y wget openssh-server openmpi-bin Ray
+RUN apt-get install -y wget unzip openssh-server openmpi-bin Ray
 
 #install prodigal
 RUN mkdir /opt/bin
