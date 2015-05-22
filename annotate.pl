@@ -40,7 +40,7 @@ while (my $line = <$file>) {
 }
 close $file;
 
-open($file, '<:encoding(UTF-8)', 'Contigs_gt1kb.prodigal.faa.bedtools.tsv') or die $!;
+open($file, '<:encoding(UTF-8)', '4_genes/Contigs_gt1kb.prodigal.faa.bedtools.tsv') or die $!;
 while (my $line = <$file>) {
 	chomp $line;
 	$line =~ m/^(contig-\d+).*ID=(\d+)_(\d+)/;
@@ -52,7 +52,7 @@ while (my $line = <$file>) {
 }
 close $file;
 
-open($file, '<:encoding(UTF-8)', 'Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv') or die $!;
+open($file, '<:encoding(UTF-8)', '4_genes/Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv') or die $!;
 while (my $line = <$file>) {
 	chomp $line;
 	my @tmp = split('\t', $line);

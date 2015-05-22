@@ -189,5 +189,5 @@ $(WORKING_DIR)/4_genes/Contigs.prodigal.gff.bedtools.tsv: $(WORKING_DIR)/3_mappi
 .PHONY: kegg-annotate
 kegg-annotate: $(WORKING_DIR)/4_genes/Contigs.prodigal.faa.blastp.kegg.annotated.tsv
 
-$(WORKING_DIR)/4_genes/Contigs.prodigal.faa.blastp.kegg.annotated.tsv: annotate.pl genes_ko.list ko_module.list ko_pathway.list Contigs.prodigal.faa.blastp.kegg.tsv Contigs.prodigal.gff.bedtools.tsv
+$(WORKING_DIR)/4_genes/Contigs.prodigal.faa.blastp.kegg.annotated.tsv: annotate.pl genes_ko.list ko_module.list ko_pathway.list $(WORKING_DIR)/4_genes/Contigs.prodigal.faa.blastp.kegg.tsv $(WORKING_DIR)/4_genes/Contigs.prodigal.gff.bedtools.tsv
 	perl annotate.pl > $@
