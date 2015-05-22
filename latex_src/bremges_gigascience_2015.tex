@@ -48,7 +48,7 @@
 
 %%% Load packages
 \usepackage{amsthm,amsmath}
-%\RequirePackage{natbib}
+\RequirePackage{natbib}
 \RequirePackage{hyperref}
 \usepackage[utf8]{inputenc} %unicode support
 %\usepackage[applemac]{inputenc} %applemac support if unicode package fails
@@ -79,8 +79,9 @@
 %%% Put your definitions there:
 \startlocaldefs
 \setlength{\marginparwidth}{2cm}
-%\usepackage[disable]{todonotes}
-\usepackage[draft]{todonotes}
+\usepackage{url}
+%TODO remove graphicx
+\usepackage{graphicx}
 \endlocaldefs
 
 
@@ -305,7 +306,7 @@ Prior to the sampling process, approximately $15\,l$ of the fermenter substrate 
 
 For the metagenome, aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
 
-For the metatranscriptome, a random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol.
+For the metatranscriptome, a random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol \cite{GublerHoffman}.
 
 \subsection*{Metagenomic and metatranscriptomic sequencing}
 We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
