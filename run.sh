@@ -27,5 +27,3 @@ if [ ! -d "$OUTPUT" ]; then
 fi
 
 make THREADS_RAY=$THREADS THREADS_MISC=$THREADS WORKING_DIR="/home/biogas"
-
-mv !(run.sh|Makefile|trimmomatic-0.32.jar|Trimmomatic-0.32.zip|TruSeq2-PE.fa|NexteraPE-PE.fa|input|output) /home/biogas/output
