@@ -19,4 +19,4 @@ case $i in
 esac
 done
 
-make THREADS_RAY=$THREADS THREADS_MISC=$THREADS WORKING_DIR="/home/biogas"
+make THREADS_RAY=$THREADS THREADS_MISC=$THREADS WORKING_DIR="/home/biogas/data"
