@@ -15,7 +15,7 @@ File | Description | Analysis step
 [Contigs.prodigal.fna.gz](raw_data/Contigs.prodigal.fna.gz) | Nucleotide sequences | Gene prediction
 [Contigs.prodigal.faa.gz](raw_data/Contigs.prodigal.faa.gz) | Protein translations | Gene prediction
 [Contigs.prodigal.faa.blastp.kegg.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.tsv.gz) | Tabular BLAST output | BLASTP vs. KEGG
-[Contigs.prodigal.faa.bedtools.tsv.gz](raw_data/Contigs.prodigal.faa.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
+[Contigs.prodigal.gff.bedtools.tsv.gz](raw_data/Contigs.prodigal.gff.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
 [Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
 
 All data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
