@@ -40,7 +40,7 @@ while (my $line = <$file>) {
 }
 close $file;
 
-open($file, '<:encoding(UTF-8)', '4_genes/Contigs.prodigal.faa.bedtools.tsv') or die $!;
+open($file, '<:encoding(UTF-8)', '4_genes/Contigs.prodigal.gff.bedtools.tsv') or die $!;
 while (my $line = <$file>) {
 	chomp $line;
 	$line =~ m/^(contig-\d+).*ID=(\d+)_(\d+)/;
