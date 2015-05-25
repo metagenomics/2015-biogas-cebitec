@@ -3,7 +3,7 @@
 # Some random Perl script to combine BLASTP and BEDTools output with KEGG mappings
 # Requires the KEGG mapping files 'genes_ko.list', 'ko_module.list', and 'ko_pathway.list'
 # These, together with BLASTP and BEDTools output files, must be in the working directory
-# For a sample output, please see: Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz
+# For a sample output, please see: Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz
 #
 # Author: abremges@cebitec.uni-bielefeld.de
 
