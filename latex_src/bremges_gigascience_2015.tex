@@ -313,21 +313,28 @@ We sequenced one metatranscriptome and two metagenome shotgun libraries on Illum
 On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
 Our sequencing efforts, yielding $35$ gigabases in total, are summarized in Table \ref{tReads}.
 
-\subsection*{Metagenome assembly and annotation}
+\subsection*{Metagenome assembly}
 Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of sequence data passed quality control.
 
-We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
-This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
+We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, trying a range of $k$-mer sizes from $21$ to $61$ in steps of $10$.
+To estimate the inclusivity of the set of assemblies, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4.
+We then used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM, sort the alignment file, and calculate the mapping statistics.
+Based on total assembly size, contiguity, and the percentage of mapped back metagenomic reads, we selected the assembly produced with a $k$-mer size of $31$.
+Here, we assembled approximately $228$ megabases in $54,489$ contigs greater than $1,000\,bp$, with an N50 value of $9,796\,bp$. % It's over 9000!
+$77\,\%$ ($79\,\%$) of metagenomic (metatranscriptomic) reads mapped back to the assembly.
 
-We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
+\subsection*{Gene prediction and annotation}
+We used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs.
+We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $250,596$ predicted genes, $191,766$ ($76.5\,\%$) had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $109,501$ genes with an assigned KEGG Orthology.
 Table \ref{tAssembly} summarizes our results.
 
 \subsection*{Relating the metagenome and the metatranscriptome}
-To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}. We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
+To illustrate potential use cases, we counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
+We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
 
 For a second example, we calculated the reads per kilobase per million mapped reads (RPKM) for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 Figure \ref{fCoverage} relates the two. Here, we accentuated all genes assigned to either of the three known types of methanogenic pathways.
@@ -432,7 +439,7 @@ KEGG pathway map courtesy of Kanehisa Laboratories.}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{Fig2.pdf}
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes). Common genes, shared between pathway types, are yellow ($80$ genes). In the background is a two-dimensional density estimation for all $250,596$ genes.}
+\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes). Common genes, shared between pathway types, are yellow ($80$ genes). In the background a two-dimensional density estimation for all $250,596$ genes.}
 \label{fCoverage}
 \end{figure}
 
@@ -520,6 +527,9 @@ Total size & $228,382,457\,bp$\\
 Number of contigs & $54,489$\\
 N50 value & $9,796\,bp$\\
 Largest contig & $333,979\,bp$\\
+\hline
+Mapped DNA reads & $105,461,596\,(77\,\%)$\\
+Mapped RNA reads & $57,436,058\,(79\,\%)$\\
 \hline
 Predicted genes & $250,596$\\
 of these, full-length & $172,372\,(69\,\%)$\\
