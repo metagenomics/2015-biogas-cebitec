@@ -216,7 +216,7 @@ The production of biogas takes place under anaerobic conditions and involves mic
 %a presentation of the interest or relevance of these data for the broader community
 %
 \parttitle{Findings}
-Here, we report the first deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis performed by methanogenic \emph{Archaea}. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
+Here, we report the deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and e.g. reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis performed by methanogenic \emph{Archaea}. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
 %a very brief preview of the data type(s) produced, the methods used, and information relevant to data validation
 %
 \parttitle{Conclusions}
@@ -234,8 +234,11 @@ Sequenced at least one order of magnitude deeper than previous studies, our meta
 
 \begin{keyword}
 \kwd{Biogas}
-\kwd{Metagenome}
-\kwd{Metatranscriptome}
+\kwd{Anaerobic digestion}
+\kwd{Wet fermentation}
+\kwd{Methanogenesis}
+\kwd{Metagenomics}
+\kwd{Metatranscriptomics}
 \kwd{Sequencing}
 \kwd{Assembly}
 \end{keyword}
@@ -337,12 +340,12 @@ We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring B
 Table \ref{tAssembly} summarizes our results.
 
 \subsection*{Relating the metagenome and the metatranscriptome}
-To illustrate potential use cases, we counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
-We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
+To illustrate potential use cases, we first counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
+We therefore assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
 
 For a second example, we calculated the reads per kilobase per million mapped reads (RPKM) for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 Figure \ref{fCoverage} relates the two. Here, we accentuated all genes assigned to either of the three known types of methanogenic pathways.
-Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with results obtained via 454 amplicon sequencing \cite{Zakrzewski2012}.
+Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with results obtained via 454 amplicon and metatranscriptome sequencing \cite{Zakrzewski2012}.
 
 \section*{Discussion}
 
@@ -362,7 +365,7 @@ The datasets supporting the results of this article are available in the Europea
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container. Reproduction requires roughly $74\,GiB$ of memory for the metagenome assembly.
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container. Reproduction requires roughly $74\,GiB$ memory and $200\,GiB$ storage.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
