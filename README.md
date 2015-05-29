@@ -10,13 +10,13 @@ Please refer to Table 2 in [our manuscript](latex_src/bremges_gigascience_2015.p
 
 File | Description | Analysis step
 --- | --- | ---
-[Contigs_gt1kb.fasta.gz](raw_data/Contigs_gt1kb.fasta.gz) | Assembled contigs | RayMeta assembly
-[Contigs_gt1kb.prodigal.gff.gz](raw_data/Contigs_gt1kb.prodigal.gff.gz) | Genes in GFF format | Gene prediction
-[Contigs_gt1kb.prodigal.fna.gz](raw_data/Contigs_gt1kb.prodigal.fna.gz) | Nucleotide sequences | Gene prediction
-[Contigs_gt1kb.prodigal.faa.gz](raw_data/Contigs_gt1kb.prodigal.faa.gz) | Protein translations | Gene prediction
-[Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.tsv.gz) | Tabular BLAST output | BLASTP vs. KEGG
-[Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
-[Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs_gt1kb.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
+[Contigs.fasta.gz](raw_data/Contigs.fasta.gz) | Assembled contigs | RayMeta assembly
+[Contigs.prodigal.gff.gz](raw_data/Contigs.prodigal.gff.gz) | Genes in GFF format | Gene prediction
+[Contigs.prodigal.fna.gz](raw_data/Contigs.prodigal.fna.gz) | Nucleotide sequences | Gene prediction
+[Contigs.prodigal.faa.gz](raw_data/Contigs.prodigal.faa.gz) | Protein translations | Gene prediction
+[Contigs.prodigal.faa.blastp.kegg.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.tsv.gz) | Tabular BLAST output | BLASTP vs. KEGG
+[Contigs.prodigal.gff.bedtools.tsv.gz](raw_data/Contigs.prodigal.gff.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
+[Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
 
 All data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
 
@@ -35,12 +35,12 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 [@pbelmann](https://github.com/pbelmann) implemented and tested the [accompanying Docker container](https://registry.hub.docker.com/u/metagenomics/2015-biogas-cebitec).
 
 1. `docker pull metagenomics/2015-biogas-cebitec`
-2. `docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec`
-     
+2. `docker run  -v /path/to/output/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
+
 Per default the container runs with 8 threads (and a serial execution of make).
 You can change this by specifying `--threads=NUMBER` after the docker name, e.g.:
 
-`docker run  -v /path/to/output/directory:/home/biogas/output 2015-biogas-cebitec --threads=16`
+`docker run  -v /path/to/output/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
 
 --
 

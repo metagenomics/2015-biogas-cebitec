@@ -8,7 +8,7 @@ ADD run.sh /home/biogas/run.sh
 
 #install ray
 RUN apt-get update
-RUN apt-get install -y wget openssh-server openmpi-bin Ray
+RUN apt-get install -y wget unzip openssh-server openmpi-bin Ray
 
 #install prodigal
 RUN mkdir /opt/bin
@@ -21,11 +21,11 @@ RUN apt-get install bowtie2
 #install samtools
 RUN apt-get install samtools
 
-#install trimmomatic
+#install java (needed for trimmomatic)
 RUN apt-get install -y openjdk-7-jre
 
 #install bedtools
-RUN apt-get install -y bedtools 
+RUN apt-get install -y bedtools
 
 #install make
 RUN apt-get install make

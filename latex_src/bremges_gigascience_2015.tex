@@ -48,7 +48,7 @@
 
 %%% Load packages
 \usepackage{amsthm,amsmath}
-%\RequirePackage{natbib}
+\RequirePackage{natbib}
 \RequirePackage{hyperref}
 \usepackage[utf8]{inputenc} %unicode support
 %\usepackage[applemac]{inputenc} %applemac support if unicode package fails
@@ -79,8 +79,9 @@
 %%% Put your definitions there:
 \startlocaldefs
 \setlength{\marginparwidth}{2cm}
-%\usepackage[disable]{todonotes}
-\usepackage[draft]{todonotes}
+\usepackage{url}
+%TODO remove graphicx
+\usepackage{graphicx}
 \endlocaldefs
 
 
@@ -211,11 +212,11 @@
 
 \begin{abstract} % abstract
 \parttitle{Background}
-The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter. Most of the participating microbes still have to be considered as unknown and non-cultivable. Accordingly, metagenome sequencing currently is the method of choice to obtain insights into community composition and the genetic repertoire.
+The production of biogas takes place under anaerobic conditions and involves microbial decomposition of organic matter. Most of the participating microbes still have to be considered as unknown and non-cultivable. Accordingly, shotgun metagenome sequencing currently is the method of choice to obtain insights into community composition and the genetic repertoire.
 %a presentation of the interest or relevance of these data for the broader community
 %
 \parttitle{Findings}
-Here, we report the first deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis performed by methanogenic \emph{Archaea}. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
+Here, we report the deeply sequenced metagenome and metatranscriptome of a complex biogas-producing microbial community from an agricultural production-scale biogas plant. We assembled the metagenome and e.g. reconstructed most genes involved in the methane metabolism, a key pathway involving methanogenesis performed by methanogenic \emph{Archaea}. This exemplary result indicates sufficient sequencing coverage for most downstream analyses.
 %a very brief preview of the data type(s) produced, the methods used, and information relevant to data validation
 %
 \parttitle{Conclusions}
@@ -233,8 +234,11 @@ Sequenced at least one order of magnitude deeper than previous studies, our meta
 
 \begin{keyword}
 \kwd{Biogas}
-\kwd{Metagenome}
-\kwd{Metatranscriptome}
+\kwd{Anaerobic digestion}
+\kwd{Wet fermentation}
+\kwd{Methanogenesis}
+\kwd{Metagenomics}
+\kwd{Metatranscriptomics}
 \kwd{Sequencing}
 \kwd{Assembly}
 \end{keyword}
@@ -283,15 +287,19 @@ Production of biogas by means of anaerobic digestion of biomass is becoming incr
 The process of biogas production takes place under anaerobic conditions and involves microbial decomposition of organic matter, yielding methane as the main final product of the fermentation process. Complex consortia of microorganisms are responsible for biomass decomposition and biogas production.
 The majority of the participating microbes are still unknown, as is their influence on reactor performance. Since most of the organisms within biogas communities are non-cultivable by today’s conventional microbiological techniques, sequencing of metagenomic total community DNA currently is the best way to obtain unbiased insights into community composition and the metabolic potential of key community members.
 
-Here, we report the first deeply sequenced metagenome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaDB}.
-We sequenced $27.3 \times$ and $19.3 \times$ deeper, respectively, than previous studies applying 454 or SOLiD sequencing \cite{Jaenicke2011, Wirth2012}. Metatranscriptomic sequencing of total community RNA complements the metagenome.
-Combined, these data will enable a deeper exploration of the biogas-producing microbial community, with the objective to develop rational strategies for process optimization.
+Here, we describe the deeply sequenced metagenome and metatranscriptome of an agricultural production-scale biogas plant on the Illumina platform \cite{GigaDB}.
+We sequenced the metagenome $27 \times$ and $19 \times$ deeper, respectively, than previous studies applying 454 or SOLiD sequencing \cite{Jaenicke2011, Wirth2012}, primarily focusing on community composition.
 %454 \cite{Jaenicke2011}: 1,963,716 reads, 843,091,863 bases: factor of 27.3 more
 %SOLiD \cite{Wirth2012}: 23,897,590 reads, 1,194,879,500 bases: factor of 19.3 more
 %No idea about the 454 data from Solli, 2014: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA261310
+Metatranscriptomic sequencing of total community RNA, $230 \times$ deeper than previously reported \cite{Zakrzewski2012}, complements the metagenome.
+%454 \cite{Zakrzewski2012}: 484,920 reads, 55,164,919 bases: factor of 229.8 more
+Combined, these data will enable a deeper exploration of the biogas-producing microbial community, with the objective to develop rational strategies for process optimization.
+
 
 \subsection*{Digester management and process characterization}
-The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology and was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
+The biogas plant, located in North Rhine Westphalia, Germany, features a mesophilic continuous wet fermentation technology characterized recently \cite{Stolze2015}.
+It was designed for a capacity of $537\,kW_{el}$ combined heat and power (CHP) generation.
 The process comprises three digesters: a primary and secondary digester, where the main proportion of biogas is produced, and a storage tank, where the digestate is fermented thereafter.
 
 The primary digester is fed hourly with a mixture of $72\,\%$ maize silage and $28\,\%$ liquid pig manure.
@@ -305,32 +313,39 @@ Prior to the sampling process, approximately $15\,l$ of the fermenter substrate 
 
 For the metagenome, aliquots of $20\,g$ of the fermentation sample were used for total community DNA preparation as described previously \cite{Schlueter2008}.
 
-For the metatranscriptome, a random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol.
+For the metatranscriptome, a random-primed cDNA library was prepared by an external vendor (Vertis Biotechnologie AG). Briefly, total RNA was first treated with $5'$-P dependent Terminator exonuclease (Epicentre) to enrich for full-length mRNA carrying $5'$ CAP or triphosphate structures. Then, first-strand cDNA was synthesized using a N6 random primer and M-MLV-RNase H reverse transcriptase, and second-strand cDNA synthesis was performed according to the Gubler-Hoffman protocol \cite{GublerHoffman}.
 
 \subsection*{Metagenomic and metatranscriptomic sequencing}
 We sequenced one metatranscriptome and two metagenome shotgun libraries on Illumina's Genome Analyzer IIx system, applying the Paired-End DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 161\,bp$ paired-end reads.
 On Illumina's MiSeq system, we sequenced three further metagenome shotgun libraries, applying the Nextera DNA Sample Preparation Kit (Illumina Inc.) as described by the manufacturer and generating $2 \times 155\,bp$ paired-end reads.
 Our sequencing efforts, yielding $35$ gigabases in total, are summarized in Table \ref{tReads}.
 
-\subsection*{Metagenome assembly and annotation}
+\subsection*{Metagenome assembly}
 Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of sequence data passed quality control.
 
-We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, using a $k$-mer size of $31$ and a minimum contig length of $1,000\,bp$.
-This resulted in a total assembly size of approximately $228$ megabases in $54,489$ contigs, with an N50 value of $9,796\,bp$. % It's over 9000!
+We assembled the metagenome with Ray Meta \cite{RayMeta}, version 2.3.1, trying a range of $k$-mer sizes from $21$ to $61$ in steps of $10$.
+To estimate the inclusivity of the set of assemblies, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4.
+We then used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM, sort the alignment file, and calculate the mapping statistics.
+Based on total assembly size, contiguity, and the percentage of mapped back metagenomic reads, we selected the assembly produced with a $k$-mer size of $31$.
+Here, we assembled approximately $228$ megabases in $54,489$ contigs greater than $1,000\,bp$, with an N50 value of $9,796\,bp$. % It's over 9000!
+$77\,\%$ ($79\,\%$) of metagenomic (metatranscriptomic) reads mapped back to the assembly.
 
-We then used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs. We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
+\subsection*{Gene prediction and annotation}
+We used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs.
+We blasted the protein sequences of all predicted genes against the KEGG database \cite{KeggDB}, release 72.0, using Protein-Protein BLAST \cite{BlastPlus}, version 2.2.29+. 
 Of the $250,596$ predicted genes, $191,766$ ($76.5\,\%$) had a match in the KEGG database, using an Evalue cutoff of $10^{-6}$.
 We determined the KEGG Orthology (KO) for each gene by mapping the top-scoring BLAST hit to its orthologous gene in KEGG, resulting in $109,501$ genes with an assigned KEGG Orthology.
 Table \ref{tAssembly} summarizes our results.
 
 \subsection*{Relating the metagenome and the metatranscriptome}
-To illustrate potential use cases, we aligned the post-QC sequencing reads to the assembled contigs with bowtie2 \cite{Bowtie2}, version 2.2.4, and used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM and thereafter sort each alignment file. We counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}. We assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
+To illustrate potential use cases, we first counted the number of reads within genes using BEDTools \cite{BEDTools}, version 2.22.0, and highlighted metagenomic and metatranscriptomic coverage of the methane metabolism pathway in Figure \ref{fPathway}.
+We therefore assembled the majority of genes involved in the methane metabolism from our metagenomic data, with accompanying metatranscriptomic data suggesting active gene expression for many.
 
 For a second example, we calculated the reads per kilobase per million mapped reads (RPKM) for each gene as a crude measure for abundance (metagenome) or expression (metatranscriptome).
 Figure \ref{fCoverage} relates the two. Here, we accentuated all genes assigned to either of the three known types of methanogenic pathways.
-Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with previous work \cite{Zakrzewski2012}.
+Hydrogenotrophic methanogenesis, i.e. the reduction of CO$_{\text{2}}$ with hydrogen, appears to be highly expressed in the reactor analyzed, which is in agreement with results obtained via 454 amplicon and metatranscriptome sequencing \cite{Zakrzewski2012}.
 
 \section*{Discussion}
 
@@ -350,7 +365,7 @@ The datasets supporting the results of this article are available in the Europea
 \subsection*{Reproducibility}
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
-To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container. Reproduction requires roughly $74\,GiB$ of memory for the metagenome assembly.
+To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container. Reproduction requires roughly $74\,GiB$ memory and $200\,GiB$ storage.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
@@ -379,6 +394,7 @@ All authors read and approved the final manuscript.
 AB, IM, and FE are supported by a fellowship from the CLIB Graduate Cluster Industrial Biotechnology.
 We gratefully acknowledge funding by the German Federal Ministry of Food and Agriculture (BMEL), grant number 22006712 (joint research project Biogas-Core) and the German Federal Ministry of Education and Research (BMBF), grant number 03SF0440C (joint research project Biogas-Marker).
 We acknowledge support of the publication fee by Deutsche Forschungsgemeinschaft and the Open Access Publication Funds of Bielefeld University.
+Lastly, we wish to thank C. Titus Brown, Kornél L. Kovács, and Sebastien Boisvert for detailed and constructive open peer reviews.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
@@ -422,15 +438,20 @@ We acknowledge support of the publication fee by Deutsche Forschungsgemeinschaft
 \section*{Figures}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.9\textwidth]{map00680_cropped}
-\caption{\csentence{Methane metabolism pathway analysis.} Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?ko00680}{ko00680}], are highlighted: Genes with only metagenomic support in yellow, genes with also metatranscriptomic support, suggesting active gene expression, in orange.
-Base pathway image copyrighted by Kanehisa Laboratories.}
+\includegraphics[width=.9\textwidth]{Fig1.png}
+\caption{\csentence{Methane metabolism pathway analysis.}
+Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?ko00680}{ko00680}], are highlighted: Genes with only metagenomic support in yellow, genes with also metatranscriptomic support, suggesting active gene expression, in orange.
+Methane is produced from CO$_{\text{2}}$, methanol, or acetate.
+KEGG pathway map courtesy of Kanehisa Laboratories.}
 \label{fPathway}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.9\textwidth]{Rplot}
-\caption{\csentence{Relating the metagenome and metatranscriptome.} Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes). Common genes, shared between pathway types, are yellow ($80$ genes).}
+\includegraphics[width=.9\textwidth]{Fig2.pdf}
+\caption{\csentence{Relating the metagenome and metatranscriptome.}
+Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes).
+Common genes, shared between pathway types, are yellow ($80$ genes).
+In the background a two-dimensional density estimation for all $250,596$ genes.}
 \label{fCoverage}
 \end{figure}
 
@@ -452,15 +473,15 @@ Base pathway image copyrighted by Kanehisa Laboratories.}
 \hline
 Process parameter & Sample\\
 \hline
-Net volume & $2041\,m^{3}$\\
+Net volume & $2,041\,m^{3}$\\
 Dimensions & $6.4\,m$ high, diameter of $21\,m$\\
 Electrical capacity & $537\,kW_{el}$\\
 \hline
 pH & $7.83$\\
 Temperature & $40\,^{\circ}{\rm C}$\\
 Conductivity & $22.10\,mS/cm$\\
-Volative organic acids (VOA) & $5327\,mg/l$\\
-Total inorganic carbon (TIC) & $14397\,mg/l$\\
+Volative organic acids (VOA) & $5,327\,mg/l$\\
+Total inorganic carbon (TIC) & $14,397\,mg/l$\\
 VOA/TIC & $0.37$\\
 Ammoniacal nitrogen & $2.93\,g/l$\\
 Acetic acid & $863\,mg/l$\\
@@ -496,7 +517,7 @@ ERS697693 & MiSeq, Run B2$^{2}$ & DNA, Nextera$^{3}$ & $525 \pm 90$ & $2 \times 
 \end{table}
 
 \begin{table}[h!]
-\caption{Metagenomic and metatranscriptomic sequencing.}
+\caption{Metagenomic and metatranscriptomic sequencing and quality control.}
 \begin{tabular}{lrrrr}
 \hline
 Library type & Reads, raw & post-QC & Bases, raw & post-QC\\
@@ -518,6 +539,9 @@ Total size & $228,382,457\,bp$\\
 Number of contigs & $54,489$\\
 N50 value & $9,796\,bp$\\
 Largest contig & $333,979\,bp$\\
+\hline
+Mapped DNA reads & $105,461,596\,(77\,\%)$\\
+Mapped RNA reads & $57,436,058\,(79\,\%)$\\
 \hline
 Predicted genes & $250,596$\\
 of these, full-length & $172,372\,(69\,\%)$\\
