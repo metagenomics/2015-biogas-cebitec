@@ -21,11 +21,11 @@ RUN apt-get install bowtie2
 #install samtools
 RUN apt-get install samtools
 
-#install trimmomatic
+#install java (needed for trimmomatic)
 RUN apt-get install -y openjdk-7-jre
 
 #install bedtools
-RUN apt-get install -y bedtools 
+RUN apt-get install -y bedtools
 
 #install make
 RUN apt-get install make
