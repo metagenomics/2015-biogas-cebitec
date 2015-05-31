@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:15.04
 MAINTAINER Peter Belmann
 
 #add data
@@ -16,10 +16,10 @@ RUN wget -O /opt/bin/prodigal https://github.com/hyattpd/Prodigal/releases/downl
 RUN chmod a+x /opt/bin/prodigal
 
 #install bowtie
-RUN apt-get install bowtie2
+RUN apt-get install -y bowtie2
 
 #install samtools
-RUN apt-get install samtools
+RUN apt-get install -y samtools
 
 #install java (needed for trimmomatic)
 RUN apt-get install -y openjdk-7-jre
