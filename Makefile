@@ -9,7 +9,7 @@ all: check_bin download_data trimmomatic ray_meta bowtie2-build bowtie2-run samt
 WORKING_DIR=data
 
 # Number of threads, adjust accordingly. We used 1 machine with 48 cores.
-# Ray is a bottleneck in the mackfile, and thus should use all cores
+# Ray is a bottleneck in the makefile, and thus should use all cores
 THREADS_RAY=48
 # Using 'make -j', there will be 7 simultaneous Trimmomatic/Bowtie2 jobs
 THREADS_MISC=8
