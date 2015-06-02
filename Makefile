@@ -89,19 +89,19 @@ $(WORKING_DIR)/1_fastq/MiSeq_B2_R2.fastq.gz: $(WORKING_DIR)/1_fastq
 ###############
 
 .PHONY: trimmomatic GAIIx_Lane6 GAIIx_Lane7 GAIIx_Lane8 MiSeq_A1 MiSeq_A2 MiSeq_B1 MiSeq_B2
-trimmomatic: trimmomatic-0.32.jar TruSeq2-PE.fa NexteraPE-PE.fa GAIIx_Lane6 GAIIx_Lane7 GAIIx_Lane8 MiSeq_A1 MiSeq_A2 MiSeq_B1 MiSeq_B2
+trimmomatic: trimmomatic-0.33.jar TruSeq2-PE.fa NexteraPE-PE.fa GAIIx_Lane6 GAIIx_Lane7 GAIIx_Lane8 MiSeq_A1 MiSeq_A2 MiSeq_B1 MiSeq_B2
 
-Trimmomatic-0.32.zip:
-	wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
+Trimmomatic-0.33.zip:
+	wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.33.zip
 
-trimmomatic-0.32.jar: Trimmomatic-0.32.zip
-	unzip -p $^ Trimmomatic-0.32/trimmomatic-0.32.jar > $@
+trimmomatic-0.33.jar: Trimmomatic-0.33.zip
+	unzip -p $^ Trimmomatic-0.33/trimmomatic-0.33.jar > $@
 
-TruSeq2-PE.fa: Trimmomatic-0.32.zip
-	unzip -p $^ Trimmomatic-0.32/adapters/TruSeq2-PE.fa > $@
+TruSeq2-PE.fa: Trimmomatic-0.33.zip
+	unzip -p $^ Trimmomatic-0.33/adapters/TruSeq2-PE.fa > $@
 
-NexteraPE-PE.fa: Trimmomatic-0.32.zip
-	unzip -p $^ Trimmomatic-0.32/adapters/NexteraPE-PE.fa > $@
+NexteraPE-PE.fa: Trimmomatic-0.33.zip
+	unzip -p $^ Trimmomatic-0.33/adapters/NexteraPE-PE.fa > $@
 
 GAIIx_Lane6: $(WORKING_DIR)/1_fastq/GAIIx_Lane6.trimmomatic_1P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane6.trimmomatic_1U.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane6.trimmomatic_2P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane6.trimmomatic_2U.fastq.gz
 GAIIx_Lane7: $(WORKING_DIR)/1_fastq/GAIIx_Lane7.trimmomatic_1P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane7.trimmomatic_1U.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane7.trimmomatic_2P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_Lane7.trimmomatic_2U.fastq.gz
@@ -112,10 +112,10 @@ MiSeq_B1: $(WORKING_DIR)/1_fastq/MiSeq_B1.trimmomatic_1P.fastq.gz $(WORKING_DIR)
 MiSeq_B2: $(WORKING_DIR)/1_fastq/MiSeq_B2.trimmomatic_1P.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_B2.trimmomatic_1U.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_B2.trimmomatic_2P.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_B2.trimmomatic_2U.fastq.gz
 
 $(WORKING_DIR)/1_fastq/GAIIx_%.trimmomatic_1P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_%.trimmomatic_1U.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_%.trimmomatic_2P.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_%.trimmomatic_2U.fastq.gz: $(WORKING_DIR)/1_fastq/GAIIx_%_R1.fastq.gz $(WORKING_DIR)/1_fastq/GAIIx_%_R2.fastq.gz
-	java -jar trimmomatic-0.32.jar PE -threads $(THREADS_MISC) -baseout $(WORKING_DIR)/1_fastq/GAIIx_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:TruSeq2-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
+	java -jar trimmomatic-0.33.jar PE -threads $(THREADS_MISC) -baseout $(WORKING_DIR)/1_fastq/GAIIx_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:TruSeq2-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
 
 $(WORKING_DIR)/1_fastq/MiSeq_%.trimmomatic_1P.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_%.trimmomatic_1U.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_%.trimmomatic_2P.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_%.trimmomatic_2U.fastq.gz: $(WORKING_DIR)/1_fastq/MiSeq_%_R1.fastq.gz $(WORKING_DIR)/1_fastq/MiSeq_%_R2.fastq.gz
-	java -jar trimmomatic-0.32.jar PE -threads $(THREADS_MISC) -baseout $(WORKING_DIR)/1_fastq/MiSeq_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:NexteraPE-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
+	java -jar trimmomatic-0.33.jar PE -threads $(THREADS_MISC) -baseout $(WORKING_DIR)/1_fastq/MiSeq_$*.trimmomatic.fastq.gz $^ ILLUMINACLIP:NexteraPE-PE.fa:2:30:10:1:true LEADING:3 TRAILING:3 TOPHRED33
 
 ###############
 # Assembly (multithreaded: THREADS_RAY)
