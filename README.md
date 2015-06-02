@@ -35,12 +35,33 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 [@pbelmann](https://github.com/pbelmann) implemented and tested the [accompanying Docker container](https://registry.hub.docker.com/u/metagenomics/2015-biogas-cebitec).
 
 1. `docker pull metagenomics/2015-biogas-cebitec`
-2. `docker run  -v /path/to/output/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
+2. `docker run  -v /path/to/wokspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
+
+**Note:** The workspace directory you mount to the container should be on a volume with at least 83GB space.  
 
 Per default the container runs with 8 threads (and a serial execution of make).
 You can change this by specifying `--threads=NUMBER` after the docker name, e.g.:
 
-`docker run  -v /path/to/output/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
+`docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
+
+### Run Docker on AWS
+
+Docker container is tested on a r3.8xlarge Instance with 32 Cores, 240GB RAM and a 300 GB volume.
+
+Steps by step guide:
+
+1. Mount your Volume using the description provided by AWS: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html
+
+2. Run `sudo apt-get update` 
+
+3. Install the newest docker version by using the description on docker.com:
+https://docs.docker.com/installation/ubuntulinux/
+(This image is tested with docker version 1.6) 
+
+4. Start the container with 
+`sudo docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec `
+
+`/path/to/workspace/directory` should be the path to a directory in the volume that you mounted in step 1.
 
 --
 
