@@ -321,7 +321,7 @@ On Illumina's MiSeq system, we sequenced three further metagenome shotgun librar
 Our sequencing efforts, yielding $35$ gigabases in total, are summarized in Table \ref{tReads}.
 
 \subsection*{Metagenome assembly}
-Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.32, for adapter removal and moderate quality trimming.
+Prior to assembly, we used Trimmomatic \cite{Trimmomatic}, version 0.33, for adapter removal and moderate quality trimming.
 After adapter clipping, using Trimmomatic's \emph{Truseq2-PE} and \emph{Nextera-PE} templates, we removed leading and trailing ambiguous or low quality bases (below Phred quality scores of 3).
 Table \ref{tPostQC} summarizes the effect on sequencing depth, more than $25$ gigabases of sequence data passed quality control.
 
@@ -330,7 +330,7 @@ To estimate the inclusivity of the set of assemblies, we aligned the post-QC seq
 We then used samtools \cite{Samtools}, version 1.1, to convert SAM to BAM, sort the alignment file, and calculate the mapping statistics.
 Based on total assembly size, contiguity, and the percentage of mapped back metagenomic reads, we selected the assembly produced with a $k$-mer size of $31$.
 Here, we assembled approximately $228$ megabases in $54,489$ contigs greater than $1,000\,bp$, with an N50 value of $9,796\,bp$. % It's over 9000!
-$77\,\%$ ($79\,\%$) of metagenomic (metatranscriptomic) reads mapped back to the assembly.
+$77\,\%$ ($79\,\%$) of metagenomic (metatranscriptomic) reads mapped back to this assembly.
 
 \subsection*{Gene prediction and annotation}
 We used MetaProdigal \cite{MetaProdigal}, version 2.6.1, to predict $250,596$ protein-coding genes on the assembled contigs.
