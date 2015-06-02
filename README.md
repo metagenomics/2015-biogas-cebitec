@@ -37,20 +37,20 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/wokspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
 
-**Note:** The workspace directory you mount to the container should be on a volume with at least 83GB space.  
+**Note:** The workspace directory you mount to the container should be on a volume with >83GB space.  
 
 Per default the container runs with 8 threads (and a serial execution of make).
 You can change this by specifying `--threads=NUMBER` after the docker name, e.g.:
 
 `docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
 
-### Run Docker on AWS
+### Run Docker in AWS
 
-Docker container is tested on a r3.8xlarge Instance with 32 Cores, 240GB RAM and a 300 GB volume.
+Docker container is tested on a r3.8xlarge Instance with 32 Cores, 244GB RAM and a 320GB SSD volume.
 
 Steps by step guide:
 
-1. Mount your Volume using the description provided by AWS: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html
+1. Mount your volume (>83GB) using the description provided by AWS: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html
 
 2. Run `sudo apt-get update` 
 
