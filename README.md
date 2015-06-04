@@ -37,30 +37,29 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 1. `docker pull metagenomics/2015-biogas-cebitec`
 2. `docker run  -v /path/to/wokspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
 
-**Note:** The workspace directory, `/path/to/wokspace/directory`, mounted to the container should be on a volume with at least 100GB space.
+**Note:** The workspace directory, `/path/to/wokspace/directory`, mounted to the container should be on a volume with >83GB space.
 After the container finished, all results can be found in here.
 
 Per default the container runs with 8 threads (and a serial execution of make).
-You can change this by specifying `--threads=NUMBER` after the docker name, e.g.
+You can change this by specifying `--threads=NUMBER` after the name, e.g.
 `docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
 
-### Run Docker in AWS
+### Docker on AWS
 
-We tested the Docker container on an r3.8xlarge instance with 32 Cores, 244GB RAM and a 320GB SSD volume.
+We tested the Docker container on an [r3.8xlarge](http://www.ec2instances.info/) instance with 32 Cores, 244GB RAM and a 320GB SSD volume. It should work on smaller instances, too: reproduction requires roughly **89GB memory** and **83GB storage**.
 
-Steps by step guide:
+**Steps by step guide:**
 
-1. Choose an instance with >100GB local volume size or mount an additional volume (>100GB) using the description provided by AWS: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html
+1. Choose an instance with >83GB local volume size or mount an additional volume (>83GB) using the description provided by AWS: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html
 
-2. Run `sudo apt-get update` 
+2. Run `sudo apt-get update`
 
 3. Install the newest docker version by using the description on docker.com:
 https://docs.docker.com/installation/ubuntulinux/
-(This image is tested with docker version 1.6) 
+(This image is tested with Docker version 1.6)
 
-4. Start the container with 
-`sudo docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`</br>
-`/path/to/workspace/directory` should be the path to a directory in your local storage volume or in a volume you mounted to your instance (see step 1).
+4. Start the container with
+`sudo docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`, where `/path/to/workspace/directory` is the path to a directory in your local storage volume or in a volume you mounted to your instance (see step 1).
 
 --
 
