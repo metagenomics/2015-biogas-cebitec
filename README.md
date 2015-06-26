@@ -30,6 +30,8 @@ The complete workflow is organized in a single GNU [Makefile](Makefile). It down
 
 By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read preprocessing (*Trimmomatic*) and mapping (*Bowtie2*) with 8 threads each. This suits e.g. a single-node machine with 48 cores and parallel execution of make with `make -j`. Please adjust the default values accordingly.
 
+**Note:** [*Ray Meta* is nondeterministic](http://sourceforge.net/p/denovoassembler/mailman/message/31936187/) on 2 or more cores, and thus the assembly results will slightly vary from run to run. Downstream analyses will be affected by this, but the results are of comparable quality and mostly consistent.
+
 ### Docker container
 
 [@pbelmann](https://github.com/pbelmann) implemented and tested the [accompanying Docker container](https://registry.hub.docker.com/u/metagenomics/2015-biogas-cebitec).
