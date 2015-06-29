@@ -37,18 +37,18 @@ By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read 
 [@pbelmann](https://github.com/pbelmann) implemented and tested the [accompanying Docker container](https://registry.hub.docker.com/u/metagenomics/2015-biogas-cebitec).
 
 1. `docker pull metagenomics/2015-biogas-cebitec`
-2. `docker run  -v /path/to/wokspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
+2. `docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`
 
-**Note:** The workspace directory, `/path/to/wokspace/directory`, mounted to the container should be on a volume with >83GB space.
+**Note:** The workspace directory, `/path/to/workspace/directory`, mounted to the container should be on a volume with >83GB space.
 After the container finished, all results can be found in here.
 
 Per default the container runs with 8 threads (and a serial execution of make).
 You can change this by specifying `--threads=NUMBER` after the name, e.g.
-`docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=16`
+`docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec --threads=32`
 
 ### Docker on AWS
 
-We tested the Docker container on an [r3.8xlarge](http://www.ec2instances.info/) instance with 32 Cores, 244GB RAM and a 320GB SSD volume. It should work on smaller instances, too: reproduction requires roughly **89GB memory** and **83GB storage**.
+We tested the Docker container on an [r3.8xlarge](http://www.ec2instances.info/) instance with 32 Cores, 244GB RAM and a 320GB SSD volume. On such an instance, setting `--threads=32`, execution takes **less than 24 hours** to complete (21 hours and 16 minutes in our latest test). It should work on smaller instances, too: reproduction requires roughly **89GB memory** and **83GB storage**.
 
 **Steps by step guide:**
 
@@ -61,7 +61,7 @@ https://docs.docker.com/installation/ubuntulinux/
 (This image is tested with Docker version 1.6)
 
 4. Start the container with
-`sudo docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`, where `/path/to/workspace/directory` is the path to a directory in your local storage volume or in a volume you mounted to your instance (see step 1).
+`sudo docker run  -v /path/to/workspace/directory:/home/biogas/data metagenomics/2015-biogas-cebitec`, where `/path/to/workspace/directory` is the path to a directory in your local storage volume or in a volume you mounted to your instance (see step 1). *Set the number of threads to the number of available cores to fully utilize your instance.*
 
 --
 
