@@ -364,7 +364,7 @@ Raw sequencing data are available in the European Nucleotide Archive (ENA) under
 The complete workflow is organized in a single GNU Makefile and available on GitHub \cite{GitHub}.
 All data and results can be reproduced by a simple invocation of \emph{make}.
 To further support reproducibility, we bundled all tools and dependencies into one Docker container available on DockerHub \cite{DockerHub}. \emph{docker run} executes the aforementioned Makefile inside the container.
-Reproduction requires roughly $89\,GiB$ memory and $83\,GiB$ storage.
+Reproduction requires roughly $89\,GiB$ memory and $83\,GiB$ storage, and takes less than $24$ hours on $32$ CPU cores.
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
