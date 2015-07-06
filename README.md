@@ -1,7 +1,7 @@
 # Data availablility
 
 Raw sequencing data are available in the European Nucleotide Archive (ENA) under study accession [PRJEB8813](http://www.ebi.ac.uk/ena/data/view/PRJEB8813).
-The datasets supporting the results of this article are available in GigaDB: *Bremges et al. (2015). GigaScience Database. [doi:10.5524/100151](http://dx.doi.org/10.5524/100151)*
+The datasets supporting the results of [our manuscript](LaTeX/bremges_gigascience_2015.pdf) are available in GigaDB: *Bremges et al. (2015). GigaScience Database. [doi:10.5524/100151](http://dx.doi.org/10.5524/100151)*
 
 # Reproducibility
 
