@@ -71,8 +71,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%\def\includegraphic{}
-%\def\includegraphics{}
+\def\includegraphic{}
+\def\includegraphics{}
 
 
 
@@ -81,7 +81,7 @@
 \setlength{\marginparwidth}{2cm}
 \usepackage{url}
 %TODO remove graphicx
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \endlocaldefs
 
 
@@ -433,11 +433,11 @@ We acknowledge support of the publication fee by Deutsche Forschungsgemeinschaft
 %% Do not use \listoffigures as most will included as separate files
 
 % TODO remove newpage
-\newpage
+%\newpage
 \section*{Figures}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.9\textwidth]{Fig1.png}
+%\includegraphics[width=.9\textwidth]{Fig1.png}
 \caption{\csentence{Methane metabolism pathway analysis.}
 Genes reconstructed in our assembly, that are involved in the methane metabolism [PATH:\href{http://www.genome.jp/kegg-bin/show_pathway?ko00680}{ko00680}], are highlighted: Genes with only metagenomic support in yellow, genes with also metatranscriptomic support, suggesting active gene expression, in orange.
 Methane is synthesized from CO$_{\text{2}}$, methanol, or acetate.
@@ -446,7 +446,7 @@ KEGG pathway map courtesy of Kanehisa Laboratories.}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.9\textwidth]{Fig2.pdf}
+%\includegraphics[width=.9\textwidth]{Fig2.pdf}
 \caption{\csentence{Relating the metagenome and metatranscriptome.}
 Highlighted are genes involved in methanogenesis, color coded by pathway type: CO$_{\text{2}}$ to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00567}{M00567}] green ($96$ genes), methanol to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00356}{M00356}] red ($5$ genes), and acetate to methane [MD:\href{http://www.kegg.jp/kegg-bin/show_module?M00357}{M00357}] blue ($209$ genes).
 Common genes, shared between pathway types, are yellow ($80$ genes).
@@ -464,7 +464,7 @@ In the background a two-dimensional density estimation for all $250,596$ genes.}
 %%
 
 % TODO remove newpage
-\newpage
+%\newpage
 \section*{Tables}
 \begin{table}[h!]
 \caption{Characteristics of the studied biogas plant. Primary digester, sampling date: Nov 15, 2010.}
