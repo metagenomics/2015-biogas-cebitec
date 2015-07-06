@@ -1,24 +1,7 @@
 # Data availablility
 
-### Metagenomic and metatranscriptomic sequencing
-
-The datasets supporting the results of this article are available in the European Nucleotide Archive (ENA) under study accession [PRJEB8813](http://www.ebi.ac.uk/ena/data/view/PRJEB8813).
-
-Please refer to Table 2 in [our manuscript](latex_src/bremges_gigascience_2015.pdf) for a detailed description of our metagenomic and metatranscriptomic sequencing efforts.
-
-### Intermediate results for the review process
-
-File | Description | Analysis step
---- | --- | ---
-[Contigs.fasta.gz](raw_data/Contigs.fasta.gz) | Assembled contigs | RayMeta assembly
-[Contigs.prodigal.gff.gz](raw_data/Contigs.prodigal.gff.gz) | Genes in GFF format | Gene prediction
-[Contigs.prodigal.fna.gz](raw_data/Contigs.prodigal.fna.gz) | Nucleotide sequences | Gene prediction
-[Contigs.prodigal.faa.gz](raw_data/Contigs.prodigal.faa.gz) | Protein translations | Gene prediction
-[Contigs.prodigal.faa.blastp.kegg.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.tsv.gz) | Tabular BLAST output | BLASTP vs. KEGG
-[Contigs.prodigal.gff.bedtools.tsv.gz](raw_data/Contigs.prodigal.gff.bedtools.tsv.gz) | Read counts per gene | BEDTools multicov
-[Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz](raw_data/Contigs.prodigal.faa.blastp.kegg.annotated.tsv.gz) | Annotated results | Custom: [annotate.pl](annotate.pl)
-
-All data in [raw_data](raw_data) will be submitted to [GigaDB](http://gigadb.org/), the *GigaScience Database*, eventually.
+Raw sequencing data are available in the European Nucleotide Archive (ENA) under study accession [PRJEB8813](http://www.ebi.ac.uk/ena/data/view/PRJEB8813).
+The datasets supporting the results of this article are available in GigaDB: *Bremges et al. (2015). GigaScience Database. [doi:10.5524/100151](http://dx.doi.org/10.5524/100151)*
 
 # Reproducibility
 
