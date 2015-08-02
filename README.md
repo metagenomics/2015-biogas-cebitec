@@ -1,17 +1,21 @@
-# Data availablility
+# Deeply sequenced metagenome and metatranscriptome of a biogas-producing microbial community from an agricultural production-scale biogas plant
+
+Bremges *et al.* **(2015)**. *GigaScience*, 4:33. [doi:10.1186/s13742-015-0073-6](http://dx.doi.org/10.1186/s13742-015-0073-6)
+
+## Data availablility
 
 Raw sequencing data are available in the European Nucleotide Archive (ENA) under study accession [PRJEB8813](http://www.ebi.ac.uk/ena/data/view/PRJEB8813).
-The datasets supporting the results of [our manuscript](LaTeX/bremges_gigascience_2015.pdf) are available in GigaDB:
+The datasets supporting the results of [our manuscript](http://dx.doi.org/10.1186/s13742-015-0073-6) are available in *GigaScience*'s GigaDB:
 
-Bremges et al. **(2015)**. *GigaScience Database*. [doi:10.5524/100151](http://dx.doi.org/10.5524/100151)
+Bremges *et al.* **(2015)**. *GigaScience Database*. [doi:10.5524/100151](http://dx.doi.org/10.5524/100151)
 
-# Reproducibility
+## Reproducibility
 
 Excluding the KEGG analysis, which relies on a commercial license of the KEGG database, all steps are performed using free and open-source software.
 
 ### Makefile
 
-The complete workflow is organized in a single GNU [Makefile](Makefile). It downloads all data and re-runs all analysis steps (w/o the time-consuming BLASTP search against KEGG, for that please adjust the Makefile). All data and results can be reproduced by a simple invocation of `make`.
+The complete workflow is organized in a single GNU [Makefile](https://github.com/metagenomics/2015-biogas-cebitec/blob/master/Makefile). It downloads all data and re-runs all analysis steps (w/o the time-consuming BLASTP search against KEGG, for that please adjust the Makefile). All data and results can be reproduced by a simple invocation of `make`.
 
 By default, the metagenome assembly (*Ray Meta*) will run with 48 threads. Read preprocessing (*Trimmomatic*) and mapping (*Bowtie2*) with 8 threads each. This suits e.g. a single-node machine with 48 cores and parallel execution of make with `make -j`. Please adjust the default values accordingly.
 
